@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { View } from "./TopTracks.styled";
 import Song from "../Song";
 
 const TopTracks = (props: any) => {
-  console.log("test test ", props);
-  const { songs } = props;
+  const { topTracks } = props;
+
+  useEffect(() => {
+    props.requestTopTracks();
+  }, []);
+
   return (
     <View>
-      {Object.values(songs).map((song: any) => (
+      {topTracks.map((song: any) => (
         <Song song={song} key={song.id} />
       ))}
     </View>

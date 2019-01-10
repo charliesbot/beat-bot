@@ -1,23 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { openLoginPopup } from "./Login.utils";
 import { LoginButton } from "./Login.styled";
 
-const client_id = "9eddbd6ad5384b629eae7f0656108325";
-const scopes = "user-top-read";
-const redirect_uri =
-  "https://s.codepen.io/leemartin/debug/ffc5867e9dd2a8119bdf9c7735e021cc";
-
-const triggerLogin = () => {
-  window.open(
-    `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=token&redirect_uri=${redirect_uri}&scope=${scopes}&show_dialog=true`,
-    "Login with Spotify",
-    "width=800,height=600"
-  );
+const triggerLogin = (requestLogin: any) => () => {
+  const popup = openLoginPopup();
+  window.spotifyCallback = async (token: any) => {
+    if (popup) {
+      popup.close();
+      requestLogin({ token });
+    }
+  };
 };
 
-const Login = () => {
+const Login = (props: any) => {
+  const { requestUser } = props;
+  useEffect(() => {
+    const token = window.location.hash
+      .substr(1)
+      .split("&")[0]
+      .split("=")[1];
+    if (token) {
+      window.opener.spotifyCallback(token);
+    }
+  });
+
   return (
     <div>
-      <LoginButton onClick={triggerLogin}>Login</LoginButton>
+      <LoginButton onClick={triggerLogin(requestUser)}>Login</LoginButton>
     </div>
   );
 };

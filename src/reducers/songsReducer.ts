@@ -1,16 +1,15 @@
-import songsMock from "./songsMock";
+import { GET_TOP_TRACKS } from "../actions/topTracksActions";
 
-const normalized = songsMock.items.reduce((acum: any, current) => {
-  acum[current.id] = current;
-  return acum;
-}, {});
-
-const songs = (state = normalized, action: any) => {
-  switch (action) {
-    case "GET_SONGS": {
+const songsReducer = (state: any = {}, action: any) => {
+  switch (action.type) {
+    case GET_TOP_TRACKS.completed.TYPE: {
+      const hash = action.payload.songs.items.reduce((acum: any, item: any) => {
+        acum[item.id] = item;
+        return acum;
+      }, {});
       return {
         ...state,
-        ...action.payload.songs
+        ...hash
       };
     }
     default:
@@ -18,4 +17,4 @@ const songs = (state = normalized, action: any) => {
   }
 };
 
-export default songs;
+export default songsReducer;

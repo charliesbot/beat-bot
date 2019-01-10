@@ -1,14 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { ConnectedRouter } from "connected-react-router";
 import { Provider } from "react-redux";
 import GlobalStyle from "./globalStyle";
-import store from "./store";
+import store, { history } from "./store";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
     <GlobalStyle />
   </Provider>,
   document.getElementById("root")
