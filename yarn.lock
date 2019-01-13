@@ -938,6 +938,11 @@
     "@svgr/core" "^2.4.1"
     loader-utils "^1.1.0"
 
+"@types/better-scroll@^1.12.1":
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/@types/better-scroll/-/better-scroll-1.12.1.tgz#493d12ca4b5a23cf877bed2358cf0e0ca63cda98"
+  integrity sha512-jI/nmYl6+RbGsVIhJpqpoh09hC5Kf/OZiwYKCcfmoihpxxTPkeuNdz9DyRhdXf09Wgl1l9n/bOXXo9ucwgp4Lg==
+
 "@types/history@*":
   version "4.7.2"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.2.tgz#0e670ea254d559241b6eeb3894f8754991e73220"
@@ -947,6 +952,11 @@
   version "23.3.11"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.11.tgz#d3a936ae753d9e484965f5cbd19027c2b8af2551"
   integrity sha512-eroF85PoG87XjCwzxey7yBsQNkIY/TV5myKKSG/022A0FW25afdu/uub6JDMS5eT68zBBt82S+w/MFOTjeLM3Q==
+
+"@types/lodash@^4.14.119":
+  version "4.14.119"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.119.tgz#be847e5f4bc3e35e46d041c394ead8b603ad8b39"
+  integrity sha512-Z3TNyBL8Vd/M9D9Ms2S3LmFq2sSMzahodD6rCS9V2N44HUMINb75jNkSuwAx7eo2ufqTdfOdtGQpNbieUjPQmw==
 
 "@types/node@*", "@types/node@10.12.18":
   version "10.12.18"
@@ -1757,7 +1767,7 @@ babel-register@^6.26.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.15"
 
-babel-runtime@^6.22.0, babel-runtime@^6.26.0:
+babel-runtime@^6.0.0, babel-runtime@^6.22.0, babel-runtime@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   integrity sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
@@ -1840,6 +1850,13 @@ bcrypt-pbkdf@^1.0.0:
   integrity sha1-pDAdOJtqQ/m2f/PKEaP2Y342Dp4=
   dependencies:
     tweetnacl "^0.14.3"
+
+better-scroll@^1.13.4:
+  version "1.13.4"
+  resolved "https://registry.yarnpkg.com/better-scroll/-/better-scroll-1.13.4.tgz#3b5c1e15f20bc25a80ada99ed0614e97bbf76edf"
+  integrity sha512-pqV+44Uc2JXXZxMSli6aOCkSgMVlugpakrb7lpXul512jTaV9jPiLhzOWHPDMnwE6V0iPhQp/zcb3imS+2Gwrw==
+  dependencies:
+    babel-runtime "^6.0.0"
 
 bfj@6.1.1:
   version "6.1.1"

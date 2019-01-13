@@ -7,12 +7,14 @@ type ArtProps = {
 export const Container = styled.div`
   display: flex;
   width: 50rem;
+  height: 50rem;
+  transition: 100ms linear transform;
+  will-change: transform;
 `;
 
 export const Art = styled.div`
   width: 100%;
   height: 50rem;
-  border-radius: 2rem;
   background-size: cover;
   background-image: url('${({ coverArt }: ArtProps) => coverArt}');
 `;
