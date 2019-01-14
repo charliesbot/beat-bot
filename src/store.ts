@@ -9,14 +9,14 @@ const sagaMiddleware = createSagaMiddleware();
 export const history = createBrowserHistory();
 
 // dev tools middleware
-const reduxDevTools =
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+// const reduxDevTools =
+// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
 const store = createStore(
   rootReducer(history),
   compose(
-    applyMiddleware(routerMiddleware(history), sagaMiddleware),
-    reduxDevTools
+    applyMiddleware(routerMiddleware(history), sagaMiddleware)
+    // reduxDevTools
   )
 );
 
