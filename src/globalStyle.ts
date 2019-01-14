@@ -4,6 +4,14 @@ import styledNormalize from "styled-normalize";
 export default createGlobalStyle`
   ${styledNormalize};
 
+  html {
+  box-sizing: border-box;
+  font-family: 'ProximaNova', sans-serif;
+  }
+  *, *:before, *:after {
+  box-sizing: inherit;
+  }
+
   html, body, #root {
     display: block;
     height: 100%;

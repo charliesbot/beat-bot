@@ -1,15 +1,5 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-    position: relative;
-    z-index: 1000;
-    float: right;
-    display: flex;
-    flex-direction: column;
-    padding: 3rem;
-}
-`;
-
 export const SeedCounter = styled.button`
     position: relative;
     padding: 2rem 8rem;
@@ -92,5 +82,26 @@ export const RecommendationsButton = styled(BaseButton)`
   transition: ease all 200ms;
   &:hover {
     background-color: #9a8eac;
+  }
+`;
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1000;
+  float: right;
+  padding: 3rem;
+  @media (max-width: 1024px) {
+    padding: 0;
+    width: 100%;
+    ${SeedCounter} {
+      width: 100%;
+      margin: 0;
+      border-radius: 0;
+    }
+    ${Dropdown} {
+      width: 100%;
+    }
   }
 `;

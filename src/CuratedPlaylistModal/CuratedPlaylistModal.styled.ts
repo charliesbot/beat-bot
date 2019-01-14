@@ -13,16 +13,6 @@ export const Overlay = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
 `;
 
-export const Container = styled.div`
-  position: relative;
-  width: 110rem;
-  max-height: 50vh;
-  padding: 4rem;
-  border-radius: 4px;
-  background-color: white;
-  overflow: auto;
-`;
-
 export const CloseButton = styled.div`
   display: flex;
   justify-content: center;
@@ -38,5 +28,19 @@ export const CloseButton = styled.div`
   &:hover {
     color: white;
     background-color: gray;
+  }
+`;
+
+export const Container = styled.div`
+  position: relative;
+  width: 110rem;
+  max-height: 50vh;
+  padding: 4rem;
+  border-radius: 4px;
+  background-color: white;
+  overflow: auto;
+  @media (max-width: 1024px) {
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 `;
