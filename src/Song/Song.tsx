@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import { Art, Container } from "./Song.styled";
 
-// 201 / 200 -3
 const SIZE = 200;
 const MAX_SCALE = 2;
 
@@ -15,11 +14,11 @@ const offset = (el: HTMLElement) => {
     return;
   }
   const rect = el.getBoundingClientRect();
-  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const scrollLeft = window.pageXOffset;
+  const scrollTop = window.pageYOffset;
   return {
-    x: rect.top + scrollTop + rect.height / 2,
-    y: rect.left + scrollLeft + rect.width / 2
+    x: rect.left + scrollLeft + rect.width / 2,
+    y: rect.top + scrollTop + rect.height / 2
   };
 };
 
@@ -39,23 +38,6 @@ const Song = (props: any) => {
   const onClick = () => onToggleSong(song.id);
   const { album } = song;
 
-  // a -> distanceBetweenPoints
-  // C = function(a, b) {
-  // var c, d;
-  // if (b == null) {
-  // b = {
-  // radius: 1,
-  // maxScale: 3
-  // }
-  // }
-  // c = a / b.radius;
-  // d = b.maxScale - b.maxScale * c;
-  // if (d < 1) {
-  // d = 1
-  // }
-  // return d
-  // }
-
   const coverPoints = offset(ref.current);
   const calculatedDistance = distanceBetweenPoints(origin, coverPoints);
 
@@ -73,7 +55,7 @@ const Song = (props: any) => {
   };
 
   return (
-    <Container ref={ref} style={style} onClick={onClick}>
+    <Container ref={ref} style={style} onClick={onClick} size={SIZE}>
       <Art coverArt={coverArt} />
     </Container>
   );

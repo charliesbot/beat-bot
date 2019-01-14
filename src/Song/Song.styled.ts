@@ -1,13 +1,14 @@
 import styled from "styled-components";
+import property from "lodash/fp/property";
 
 type ArtProps = {
   coverArt: string;
 };
 
-export const Container = styled.div`
+export const Container = styled.div<{ size: number }>`
   display: flex;
-  width: 50rem;
-  height: 50rem;
+  width: ${property("size")}px;
+  height: ${property("size")}px;
   transition: 100ms linear transform;
   border-radius: 1.5rem;
   overflow: hidden;
@@ -16,7 +17,7 @@ export const Container = styled.div`
 
 export const Art = styled.div`
   width: 100%;
-  height: 50rem;
+  height: 100%;
   background-size: cover;
   background-image: url('${({ coverArt }: ArtProps) => coverArt}');
 `;

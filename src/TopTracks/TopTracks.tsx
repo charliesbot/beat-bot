@@ -6,6 +6,8 @@ import { Wrapper, Content, Container } from "./TopTracks.styled";
 import SeedersMenu from "../SeedersMenu";
 import Song from "../Song";
 
+let bscroll: BScroll;
+
 const getCenter = (node: HTMLElement) => {
   const x = node.offsetLeft + node.offsetWidth / 2;
   const y = node.offsetTop + node.offsetHeight / 2;
@@ -39,7 +41,7 @@ const TopTracks = (props: any) => {
 
   useLayoutEffect(() => {
     props.requestTopTracks();
-    const bscroll = new BScroll(wrapper.current, {
+    bscroll = new BScroll(wrapper.current, {
       freeScroll: true,
       mouseWheel: true,
       scrollbar: false,

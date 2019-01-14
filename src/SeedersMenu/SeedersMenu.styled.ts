@@ -86,11 +86,11 @@ export const RemoveButton = styled(BaseButton)`
 export const RecommendationsButton = styled(BaseButton)`
   width: 100%;
   height: 10rem;
-  background-color: #9A8EAC;
+  background-color: #483a5d;
   font-weigth: bold;
   color: white;
   transition: ease all 200ms;
   &:hover {
-    background-color: #483A5D;
+    background-color: #9a8eac;
   }
 `;
