@@ -35,7 +35,8 @@ const distanceBetweenPoints = (point1?: Point, point2?: Point) => {
 
 const Song = (props: any) => {
   const ref: any = useRef(null);
-  const { song, origin } = props;
+  const { song, origin, onToggleSong } = props;
+  const onClick = () => onToggleSong(song.id);
   const { album } = song;
 
   // a -> distanceBetweenPoints
@@ -57,7 +58,7 @@ const Song = (props: any) => {
 
   const coverPoints = offset(ref.current);
   const calculatedDistance = distanceBetweenPoints(origin, coverPoints);
-  // 2 - 0 / (200 * 1.65)
+
   const delta = MAX_SCALE - calculatedDistance / (SIZE * 1.65);
 
   const limitedDelta = delta >= 1 ? delta : 1;
@@ -72,7 +73,7 @@ const Song = (props: any) => {
   };
 
   return (
-    <Container ref={ref} style={style}>
+    <Container ref={ref} style={style} onClick={onClick}>
       <Art coverArt={coverArt} />
     </Container>
   );

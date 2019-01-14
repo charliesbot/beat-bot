@@ -27,3 +27,5 @@ export const Overlay = styled.div`
   top: 0;
   left: 0;
 `;
+
+export const Container = styled.div``;

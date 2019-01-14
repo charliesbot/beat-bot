@@ -1,7 +1,8 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import debounce from "lodash/fp/throttle";
 import BScroll, { Position } from "better-scroll";
-import { Wrapper, Content, Overlay } from "./TopTracks.styled";
+import { Wrapper, Content, Container } from "./TopTracks.styled";
+import SeedersMenu from "../SeedersMenu";
 import Song from "../Song";
 
 const getCenter = (node: HTMLElement) => {
@@ -13,8 +14,19 @@ const getCenter = (node: HTMLElement) => {
 const TopTracks = (props: any) => {
   const wrapper: any = useRef(null);
   const [origin, setOrigin] = useState({ x: 0, y: 0 });
+  const [selectedSongs, setSelectedSongs] = useState(new Set());
   const [scrollPosition, setScrollPosition] = useState({});
-  const { topTracks } = props;
+  const { topTracks, songs } = props;
+
+  const toggleSong = (songId: string) => {
+    if (selectedSongs.has(songId)) {
+      selectedSongs.delete(songId);
+    } else if (selectedSongs.size < 5) {
+      selectedSongs.add(songId);
+    }
+
+    setSelectedSongs(selectedSongs);
+  };
 
   const onScroll = debounce(50, (position: Position) => {
     setScrollPosition(position);
@@ -38,18 +50,26 @@ const TopTracks = (props: any) => {
   }, []);
 
   return (
-    <Wrapper ref={wrapper} className="wrapper">
-      <Content className="content">
-        {topTracks.map((song: any, id: number) => (
-          <Song
-            song={song}
-            key={id}
-            origin={origin}
-            scrollPosition={scrollPosition}
-          />
-        ))}
-      </Content>
-    </Wrapper>
+    <Container>
+      <SeedersMenu
+        seedSongs={selectedSongs}
+        songs={songs}
+        onRemoveSong={toggleSong}
+      />
+      <Wrapper ref={wrapper} className="wrapper">
+        <Content className="content">
+          {topTracks.map((song: any, id: number) => (
+            <Song
+              song={song}
+              key={id}
+              origin={origin}
+              scrollPosition={scrollPosition}
+              onToggleSong={toggleSong}
+            />
+          ))}
+        </Content>
+      </Wrapper>
+    </Container>
   );
 };
 
