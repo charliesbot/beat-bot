@@ -32,7 +32,7 @@ const SpotifySDK = {
   getRecommendationsBasedOnSeeds: async ({ seedTracks }: Seeds) => {
     const seedTracksQuery = `seed_tracks=${seedTracks.join()}`;
     const response = await fetchSpotifyAPI(
-      `https://api.spotify.com/v1/recommendations?${seedTracksQuery}`
+      `recommendations?${seedTracksQuery}`
     );
     return await response.json();
   }

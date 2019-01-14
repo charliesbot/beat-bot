@@ -1,4 +1,5 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
+import CuratedPlaylistModal from "../CuratedPlaylistModal";
 import debounce from "lodash/fp/throttle";
 import BScroll, { Position } from "better-scroll";
 import { Wrapper, Content, Container } from "./TopTracks.styled";
@@ -16,7 +17,11 @@ const TopTracks = (props: any) => {
   const [origin, setOrigin] = useState({ x: 0, y: 0 });
   const [selectedSongs, setSelectedSongs] = useState(new Set());
   const [scrollPosition, setScrollPosition] = useState({});
+  const [isModalOpen, setModalOpen] = useState(false);
   const { topTracks, songs } = props;
+
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
 
   const toggleSong = (songId: string) => {
     if (selectedSongs.has(songId)) {
@@ -51,9 +56,16 @@ const TopTracks = (props: any) => {
 
   return (
     <Container>
+      {isModalOpen && (
+        <CuratedPlaylistModal
+          onCloseModal={closeModal}
+          seedSongs={selectedSongs}
+        />
+      )}
       <SeedersMenu
         seedSongs={selectedSongs}
         songs={songs}
+        onOpenModal={openModal}
         onRemoveSong={toggleSong}
       />
       <Wrapper ref={wrapper} className="wrapper">

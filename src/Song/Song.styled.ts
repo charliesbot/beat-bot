@@ -9,6 +9,8 @@ export const Container = styled.div`
   width: 50rem;
   height: 50rem;
   transition: 100ms linear transform;
+  border-radius: 1.5rem;
+  overflow: hidden;
   will-change: transform;
 `;
 

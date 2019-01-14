@@ -55,7 +55,7 @@ export const Row = styled.li`
 `;
 
 export const Dropdown = styled.ul`
-  width: 300px;
+  width: 100rem;
   padding: 0;
   margin-top: 1rem;
   background-color: white;
@@ -70,6 +70,7 @@ export const BaseButton = styled.button`
   cursor: pointer;
   justify-content: center;
   align-items: center;
+  outline: none;
   --webkit-appearance: none;
   background-color: transparent;
   border: none;

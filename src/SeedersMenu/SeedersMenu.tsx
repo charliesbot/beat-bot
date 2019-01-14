@@ -1,25 +1,24 @@
 import React, { useState } from "react";
 import { MdClose } from "react-icons/md";
+import SongRow from "../SongRow";
 import {
-  AlbumArt,
   Container,
   RemoveButton,
   RecommendationsButton,
   Dropdown,
-  Row,
-  SeedCounter,
-  Details
+  SeedCounter
 } from "./SeedersMenu.styled";
 
 type Props = {
   seedSongs: Set<string>;
   songs: any;
   onRemoveSong: (id: string) => void;
+  onOpenModal: () => void;
 };
 
 const SeedersMenu = (props: Props) => {
-  const { songs, seedSongs, onRemoveSong } = props;
-  const [isOpen, setIsOpen] = useState(true);
+  const { songs, seedSongs, onRemoveSong, onOpenModal } = props;
+  const [isOpen, setIsOpen] = useState(false);
 
   const fullSelectedSongs = Array.from(seedSongs).map(id => songs[id]);
   const removeSong = (id: string) => () => onRemoveSong(id);
@@ -35,19 +34,20 @@ const SeedersMenu = (props: Props) => {
         <Dropdown>
           {fullSelectedSongs.map(song => {
             return (
-              <Row key={song.id}>
-                <AlbumArt src={song.album.images[2].url} />
-                <Details>
-                  <strong>{song.name}</strong>
-                  <span>{song.artist}</span>
-                </Details>
-                <RemoveButton onClick={removeSong(song.id)}>
-                  <MdClose />
-                </RemoveButton>
-              </Row>
+              <SongRow
+                key={song.id}
+                song={song}
+                right={
+                  <RemoveButton onClick={removeSong(song.id)}>
+                    <MdClose />
+                  </RemoveButton>
+                }
+              />
             );
           })}
-          <RecommendationsButton>Find recommendations</RecommendationsButton>
+          <RecommendationsButton onClick={onOpenModal}>
+            Find recommendations
+          </RecommendationsButton>
         </Dropdown>
       )}
     </Container>

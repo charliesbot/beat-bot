@@ -2,7 +2,7 @@ import { call, takeLatest, put } from "redux-saga/effects";
 import { GET_RECOMMENDATION_SEED } from "../actions/recommendationSeedActions";
 import SpotifySDK from "../spotifySdk/SpotifySDK";
 
-function* triggerGetRecommendationSeed(payload: any) {
+function* triggerGetRecommendationSeed({ payload }: any) {
   yield put(GET_RECOMMENDATION_SEED.started());
   const { seedTracks } = payload;
   const songs = yield call(() =>
