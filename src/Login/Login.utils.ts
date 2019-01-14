@@ -1,6 +1,7 @@
 const client_id = "c548f2e4e6a048c19f351bc8da52f27c";
 const scopes = "user-top-read";
-const redirect_uri = "http://localhost:3000/login";
+const redirect_uri = `${window.location.origin}/login`;
+console.log(redirect_uri);
 
 export const openLoginPopup = () =>
   window.open(
