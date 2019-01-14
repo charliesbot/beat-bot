@@ -1,18 +1,5 @@
 import styled from "styled-components";
 
-export const Overlay = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10000;
-  background-color: rgba(0, 0, 0, 0.7);
-`;
-
 export const CloseButton = styled.div`
   display: flex;
   justify-content: center;
@@ -39,6 +26,19 @@ export const Container = styled.div`
   border-radius: 4px;
   background-color: white;
   overflow: auto;
+`;
+
+export const Overlay = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.7);
   @media (max-width: 1024px) {
     justify-content: flex-start;
     align-items: flex-start;
