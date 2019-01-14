@@ -1,38 +1,20 @@
 import React, { useRef } from "react";
 import { Art, Container } from "./Song.styled";
+import { offset, distanceBetweenPoints } from "../utils/layout";
+import { Song as SongType } from "../@types/Song.type";
+import { Point } from "../@types/Point.type";
+
+type Props = {
+  song: SongType;
+  origin: Point;
+  onToggleSong: (songId: string) => void;
+  scrollPosition: object;
+};
 
 const SIZE = 200;
 const MAX_SCALE = 2;
 
-type Point = {
-  x: number;
-  y: number;
-};
-
-const offset = (el: HTMLElement) => {
-  if (!el) {
-    return;
-  }
-  const rect = el.getBoundingClientRect();
-  const scrollLeft = window.pageXOffset;
-  const scrollTop = window.pageYOffset;
-  return {
-    x: rect.left + scrollLeft + rect.width / 2,
-    y: rect.top + scrollTop + rect.height / 2
-  };
-};
-
-const distanceBetweenPoints = (point1?: Point, point2?: Point) => {
-  if (!point1 || !point2) {
-    return 0;
-  }
-
-  const x = Math.pow(point1.x - point2.x, 2);
-  const y = Math.pow(point1.y - point2.y, 2);
-  return Math.sqrt(x + y);
-};
-
-const Song = (props: any) => {
+const Song = (props: Props) => {
   const ref: any = useRef(null);
   const { song, origin, onToggleSong } = props;
   const onClick = () => onToggleSong(song.id);

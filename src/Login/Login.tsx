@@ -2,9 +2,15 @@ import React, { useEffect } from "react";
 import { openLoginPopup } from "./Login.utils";
 import { Container, LoginButton } from "./Login.styled";
 
-const triggerLogin = (requestLogin: any) => () => {
+type Props = {
+  requestUser: () => void;
+};
+
+type RequestLogin = (_: { token: string }) => void;
+
+const triggerLogin = (requestLogin: RequestLogin) => () => {
   const popup = openLoginPopup();
-  window.spotifyCallback = async (token: any) => {
+  window.spotifyCallback = async (token: string) => {
     if (popup) {
       popup.close();
       requestLogin({ token });
@@ -12,7 +18,7 @@ const triggerLogin = (requestLogin: any) => () => {
   };
 };
 
-const Login = (props: any) => {
+const Login = (props: Props) => {
   const { requestUser } = props;
   useEffect(() => {
     const token = window.location.hash

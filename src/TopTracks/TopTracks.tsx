@@ -1,18 +1,15 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import CuratedPlaylistModal from "../CuratedPlaylistModal";
-import debounce from "lodash/fp/throttle";
+import throttle from "lodash/fp/throttle";
+import debounce from "lodash/fp/debounce";
+import { getCenter } from "../utils/layout";
 import BScroll, { Position } from "better-scroll";
 import { Wrapper, Content, Container } from "./TopTracks.styled";
 import SeedersMenu from "../SeedersMenu";
 import Song from "../Song";
+import { Song as SongType } from "../@types/Song.type";
 
 let bscroll: BScroll;
-
-const getCenter = (node: HTMLElement) => {
-  const x = node.offsetLeft + node.offsetWidth / 2;
-  const y = node.offsetTop + node.offsetHeight / 2;
-  return { x, y };
-};
 
 const TopTracks = (props: any) => {
   const wrapper: any = useRef(null);
@@ -35,9 +32,18 @@ const TopTracks = (props: any) => {
     setSelectedSongs(selectedSongs);
   };
 
-  const onScroll = debounce(50, (position: Position) => {
+  const onScroll = throttle(50, (position: Position) => {
     setScrollPosition(position);
   });
+
+  useLayoutEffect(() => {
+    setOrigin(getCenter(document.body));
+    const onResizeCallback = debounce(300, () => {
+      setOrigin(getCenter(document.body));
+    });
+    window.addEventListener("resize", onResizeCallback);
+    return window.removeEventListener("resize", onResizeCallback, true);
+  }, []);
 
   useLayoutEffect(() => {
     props.requestTopTracks();
@@ -51,9 +57,6 @@ const TopTracks = (props: any) => {
     });
 
     bscroll.on("scroll", onScroll);
-
-    const { x, y } = getCenter(document.body);
-    setOrigin({ x, y });
   }, []);
 
   return (
@@ -72,7 +75,7 @@ const TopTracks = (props: any) => {
       />
       <Wrapper ref={wrapper} className="wrapper">
         <Content className="content">
-          {topTracks.map((song: any, id: number) => (
+          {topTracks.map((song: SongType, id: number) => (
             <Song
               song={song}
               key={id}
