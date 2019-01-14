@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const SeedCounter = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     padding: 2rem 8rem;
     cursor: pointer;
@@ -75,9 +78,9 @@ export const RemoveButton = styled(BaseButton)`
 
 export const RecommendationsButton = styled(BaseButton)`
   width: 100%;
-  height: 10rem;
+  height: 13rem;
   background-color: #483a5d;
-  font-weigth: bold;
+  font-weight: bold;
   color: white;
   transition: ease all 200ms;
   &:hover {
@@ -96,9 +99,8 @@ export const Container = styled.div`
     padding: 0;
     width: 100%;
     ${SeedCounter} {
-      width: 100%;
-      margin: 0;
-      border-radius: 0;
+      margin: 4rem auto;
+      border-radius: 6rem;
     }
     ${Dropdown} {
       width: 100%;

@@ -42,5 +42,9 @@ export const Overlay = styled.div`
   @media (max-width: 1024px) {
     justify-content: flex-start;
     align-items: flex-start;
+    ${Container} {
+      height: 100%;
+      max-height: 100%;
+    }
   }
 `;

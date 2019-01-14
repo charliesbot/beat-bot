@@ -18,6 +18,7 @@ export const Content = styled.div`
   width: 1200px;
   color: white;
   @media (max-width: 400px) {
+    width: 800px;
     grid-template-columns: repeat(auto-fill, ${SIZES.SMALL}px);
   }
 `;

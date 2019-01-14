@@ -32,6 +32,7 @@ const TopTracks = (props: any) => {
       scrollbar: false,
       scrollX: true,
       scrollY: true,
+      tap: true,
       probeType: 3
     });
 
@@ -69,11 +70,12 @@ const TopTracks = (props: any) => {
       />
       <Wrapper ref={wrapper} className="wrapper">
         <Content className="content">
-          {topTracks.map((song: SongType, id: number) => (
+          {topTracks.map((song: SongType) => (
             <Song
+              added={selectedSongs.has(song.id)}
               size={currentSize}
               song={song}
-              key={id}
+              key={song.id}
               origin={origin}
               scrollPosition={scrollPosition}
               onToggleSong={toggleSong}

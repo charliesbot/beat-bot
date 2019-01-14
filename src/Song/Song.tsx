@@ -1,22 +1,22 @@
 import React, { useRef } from "react";
-import { Art, Container } from "./Song.styled";
+import { Container, Label, Info, Toggle } from "./Song.styled";
 import { offset, distanceBetweenPoints } from "../utils/layout";
-import { Song as SongType } from "../@types/Song.type";
 import { Point } from "../@types/Point.type";
 
 type Props = {
-  song: SongType;
+  song: any;
   origin: Point;
   onToggleSong: (songId: string) => void;
   scrollPosition: object;
   size: number;
+  added: boolean;
 };
 
 const MAX_SCALE = 2;
 
 const Song = (props: Props) => {
   const ref = useRef(null);
-  const { song, origin, onToggleSong, size } = props;
+  const { song, origin, onToggleSong, size, added } = props;
   const onClick = () => onToggleSong(song.id);
   const { album } = song;
 
@@ -35,12 +35,24 @@ const Song = (props: Props) => {
     transform: `scale(${limitedDelta})`,
     zIndex,
     width: size,
-    height: size
+    height: size,
+    backgroundImage: `url('${coverArt}')`,
+    backgroundSize: "cover"
   };
 
   return (
-    <Container ref={ref} style={style} onClick={onClick}>
-      <Art coverArt={coverArt} />
+    <Container ref={ref} style={style}>
+      {limitedDelta > 1.5 && (
+        <Label>
+          <Info>
+            <strong className="songTitle">{song.name}</strong>
+            <span>{song.artist}</span>
+          </Info>
+          <Toggle onClick={onClick} added={added}>
+            {added ? "Remove" : "Add"}
+          </Toggle>
+        </Label>
+      )}
     </Container>
   );
 };
