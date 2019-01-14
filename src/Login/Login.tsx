@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { openLoginPopup } from "./Login.utils";
-import { LoginButton } from "./Login.styled";
+import { Container, LoginButton } from "./Login.styled";
 
 const triggerLogin = (requestLogin: any) => () => {
   const popup = openLoginPopup();
@@ -25,9 +25,11 @@ const Login = (props: any) => {
   });
 
   return (
-    <div>
-      <LoginButton onClick={triggerLogin(requestUser)}>Login</LoginButton>
-    </div>
+    <Container>
+      <LoginButton onClick={triggerLogin(requestUser)}>
+        Login with Spotify
+      </LoginButton>
+    </Container>
   );
 };
 
