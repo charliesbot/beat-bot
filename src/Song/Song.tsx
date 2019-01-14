@@ -9,21 +9,21 @@ type Props = {
   origin: Point;
   onToggleSong: (songId: string) => void;
   scrollPosition: object;
+  size: number;
 };
 
-const SIZE = 200;
 const MAX_SCALE = 2;
 
 const Song = (props: Props) => {
-  const ref: any = useRef(null);
-  const { song, origin, onToggleSong } = props;
+  const ref = useRef(null);
+  const { song, origin, onToggleSong, size } = props;
   const onClick = () => onToggleSong(song.id);
   const { album } = song;
 
   const coverPoints = offset(ref.current);
   const calculatedDistance = distanceBetweenPoints(origin, coverPoints);
 
-  const delta = MAX_SCALE - calculatedDistance / (SIZE * 1.65);
+  const delta = MAX_SCALE - calculatedDistance / (size * 1.65);
 
   const limitedDelta = delta >= 1 ? delta : 1;
 
@@ -32,12 +32,14 @@ const Song = (props: Props) => {
   const coverArt = album.images[1].url;
 
   const style = {
-    transform: `scale(${limitedDelta}) translateZ(${limitedDelta}px)`,
-    zIndex
+    transform: `scale(${limitedDelta})`,
+    zIndex,
+    width: size,
+    height: size
   };
 
   return (
-    <Container ref={ref} style={style} onClick={onClick} size={SIZE}>
+    <Container ref={ref} style={style} onClick={onClick}>
       <Art coverArt={coverArt} />
     </Container>
   );

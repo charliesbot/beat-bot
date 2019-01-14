@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MdClose } from "react-icons/md";
+import { MdClose, MdKeyboardArrowDown } from "react-icons/md";
 import SongRow from "../SongRow";
 import {
   Container,
@@ -29,6 +29,7 @@ const SeedersMenu = (props: Props) => {
     <Container>
       <SeedCounter onClick={toggleIsOpen}>
         {fullSelectedSongs.length} song(s)
+        <MdKeyboardArrowDown size="20px" />
       </SeedCounter>
       {isOpen && (
         <Dropdown>

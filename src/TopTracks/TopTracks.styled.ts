@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { SIZES } from "../constants/size";
 
 export const Wrapper = styled.div`
   width: 50rem;
@@ -13,9 +14,12 @@ export const Wrapper = styled.div`
 export const Content = styled.div`
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(auto-fill, 50rem);
+  grid-template-columns: repeat(auto-fill, ${SIZES.BIG}px);
   width: 1200px;
   color: white;
+  @media (max-width: 400px) {
+    grid-template-columns: repeat(auto-fill, ${SIZES.SMALL}px);
+  }
 `;
 
 export const Overlay = styled.div`

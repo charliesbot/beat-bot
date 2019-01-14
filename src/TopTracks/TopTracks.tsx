@@ -1,9 +1,9 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
-import CuratedPlaylistModal from "../CuratedPlaylistModal";
+import { SIZES } from "../constants/size";
 import throttle from "lodash/fp/throttle";
-import debounce from "lodash/fp/debounce";
-import { getCenter } from "../utils/layout";
+import { useMobileDetector, useOrigin } from "../hooks";
 import BScroll, { Position } from "better-scroll";
+import CuratedPlaylistModal from "../CuratedPlaylistModal";
 import { Wrapper, Content, Container } from "./TopTracks.styled";
 import SeedersMenu from "../SeedersMenu";
 import Song from "../Song";
@@ -13,37 +13,16 @@ let bscroll: BScroll;
 
 const TopTracks = (props: any) => {
   const wrapper: any = useRef(null);
-  const [origin, setOrigin] = useState({ x: 0, y: 0 });
+  const isMobile = useMobileDetector();
+  const origin = useOrigin();
   const [selectedSongs, setSelectedSongs] = useState(new Set());
   const [scrollPosition, setScrollPosition] = useState({});
   const [isModalOpen, setModalOpen] = useState(false);
   const { topTracks, songs } = props;
 
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
-
-  const toggleSong = (songId: string) => {
-    if (selectedSongs.has(songId)) {
-      selectedSongs.delete(songId);
-    } else if (selectedSongs.size < 5) {
-      selectedSongs.add(songId);
-    }
-
-    setSelectedSongs(selectedSongs);
-  };
-
   const onScroll = throttle(50, (position: Position) => {
     setScrollPosition(position);
   });
-
-  useLayoutEffect(() => {
-    setOrigin(getCenter(document.body));
-    const onResizeCallback = debounce(300, () => {
-      setOrigin(getCenter(document.body));
-    });
-    window.addEventListener("resize", onResizeCallback);
-    return window.removeEventListener("resize", onResizeCallback, true);
-  }, []);
 
   useLayoutEffect(() => {
     props.requestTopTracks();
@@ -58,6 +37,21 @@ const TopTracks = (props: any) => {
 
     bscroll.on("scroll", onScroll);
   }, []);
+
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
+
+  const toggleSong = (songId: string) => {
+    if (selectedSongs.has(songId)) {
+      selectedSongs.delete(songId);
+    } else if (selectedSongs.size < 5) {
+      selectedSongs.add(songId);
+    }
+
+    setSelectedSongs(selectedSongs);
+  };
+
+  const currentSize = isMobile ? SIZES.SMALL : SIZES.BIG;
 
   return (
     <Container>
@@ -77,6 +71,7 @@ const TopTracks = (props: any) => {
         <Content className="content">
           {topTracks.map((song: SongType, id: number) => (
             <Song
+              size={currentSize}
               song={song}
               key={id}
               origin={origin}

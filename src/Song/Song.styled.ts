@@ -5,11 +5,11 @@ type ArtProps = {
   coverArt: string;
 };
 
-export const Container = styled.div<{ size: number }>`
+export const Container = styled.div`
   display: flex;
-  width: ${property("size")}px;
-  height: ${property("size")}px;
-  transition: 100ms linear transform;
+  width: 200px;
+  height: 200px;
+  transition: 100ms ease transform;
   border-radius: 1.5rem;
   overflow: hidden;
   will-change: transform;

@@ -6,7 +6,7 @@ export const getCenter = (node: HTMLElement) => {
   return { x, y };
 };
 
-export const offset = (el: HTMLElement) => {
+export const offset = (el: HTMLElement | null) => {
   if (!el) {
     return;
   }
