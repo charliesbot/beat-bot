@@ -6,7 +6,7 @@ export default createGlobalStyle`
 
   html {
   box-sizing: border-box;
-  font-family: 'ProximaNova', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   }
   *, *:before, *:after {
   box-sizing: inherit;
@@ -17,7 +17,6 @@ export default createGlobalStyle`
     height: 100%;
     width: 100%;
     overflow: hidden;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   }
 
   html {

@@ -2,7 +2,13 @@ import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import { MdClose } from "react-icons/md";
 import SongRow from "../SongRow";
-import { Overlay, Container, CloseButton } from "./CuratedPlaylistModal.styled";
+import {
+  Footer,
+  Body,
+  Overlay,
+  Container,
+  CloseButton
+} from "./CuratedPlaylistModal.styled";
 
 const CuratedPlaylistModal = (props: any) => {
   const {
@@ -22,9 +28,12 @@ const CuratedPlaylistModal = (props: any) => {
         <CloseButton onClick={onCloseModal}>
           <MdClose />
         </CloseButton>
-        {curatedSongs.map((song: any) => (
-          <SongRow song={song} key={song.id} />
-        ))}
+        <Body>
+          {curatedSongs.map((song: any) => (
+            <SongRow song={song} key={song.id} />
+          ))}
+        </Body>
+        <Footer>Create Playlist</Footer>
       </Container>
     </Overlay>,
     document.body

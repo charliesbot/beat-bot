@@ -28,7 +28,9 @@ const SeedersMenu = (props: Props) => {
   return (
     <Container>
       <SeedCounter onClick={toggleIsOpen}>
-        {fullSelectedSongs.length} song(s)
+        {fullSelectedSongs.length
+          ? `${fullSelectedSongs.length} song(s)`
+          : "Select a song!"}
         <MdKeyboardArrowDown size="20px" />
       </SeedCounter>
       {isOpen && (

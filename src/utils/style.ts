@@ -1,7 +1,8 @@
 import { css } from "styled-components";
 
 const sizes: any = {
-  mobile: 400
+  mobile: 400,
+  tablet: 1024
 };
 
 export const mediaQuery = Object.keys(sizes).reduce(
