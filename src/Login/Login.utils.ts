@@ -1,5 +1,5 @@
 const client_id = "c548f2e4e6a048c19f351bc8da52f27c";
-const scopes = "user-top-read";
+const scopes = "user-top-read playlist-modify-private";
 const redirect_uri = `${window.location.origin}/login`;
 
 export const openLoginPopup = () =>

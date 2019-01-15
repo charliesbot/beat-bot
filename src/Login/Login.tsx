@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { openLoginPopup } from "./Login.utils";
-import { Container, LoginButton } from "./Login.styled";
+import { Container, LoginButton, SpotifyIcon } from "./Login.styled";
 
 type Props = {
-  requestUser: () => void;
+  requestLogin: () => void;
 };
 
 type RequestLogin = (_: { token: string }) => void;
@@ -19,7 +19,7 @@ const triggerLogin = (requestLogin: RequestLogin) => () => {
 };
 
 const Login = (props: Props) => {
-  const { requestUser } = props;
+  const { requestLogin } = props;
   useEffect(() => {
     const token = window.location.hash
       .substr(1)
@@ -32,7 +32,8 @@ const Login = (props: Props) => {
 
   return (
     <Container>
-      <LoginButton onClick={triggerLogin(requestUser)}>
+      <LoginButton onClick={triggerLogin(requestLogin)}>
+        <SpotifyIcon size="6rem" />
         Login with Spotify
       </LoginButton>
     </Container>

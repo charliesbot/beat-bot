@@ -1,8 +1,8 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
+import BScroll, { Position } from "better-scroll";
 import { SIZES } from "../constants/size";
 import throttle from "lodash/fp/throttle";
 import { useMobileDetector, useOrigin } from "../hooks";
-import BScroll, { Position } from "better-scroll";
 import CuratedPlaylistModal from "../CuratedPlaylistModal";
 import { Wrapper, Content, Container } from "./TopTracks.styled";
 import SeedersMenu from "../SeedersMenu";
@@ -26,6 +26,7 @@ const TopTracks = (props: any) => {
 
   useLayoutEffect(() => {
     props.requestTopTracks();
+    props.requestGetUser();
     bscroll = new BScroll(wrapper.current, {
       freeScroll: true,
       mouseWheel: true,

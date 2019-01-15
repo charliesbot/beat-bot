@@ -15,7 +15,8 @@ const CuratedPlaylistModal = (props: any) => {
     onCloseModal,
     seedSongs,
     requestGetRecommendations,
-    curatedSongs
+    curatedSongs,
+    createPlaylist
   } = props;
 
   useEffect(() => {
@@ -33,7 +34,7 @@ const CuratedPlaylistModal = (props: any) => {
             <SongRow song={song} key={song.id} />
           ))}
         </Body>
-        <Footer>Create Playlist</Footer>
+        <Footer onClick={createPlaylist}>Create Playlist</Footer>
       </Container>
     </Overlay>,
     document.body
