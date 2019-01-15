@@ -1,4 +1,11 @@
 import styled from "styled-components";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import { mediaQuery } from "../utils/style";
+
+export const ArrowIcon = styled(MdKeyboardArrowDown)`
+  position: absolute;
+  right: 3rem;
+`;
 
 export const SeedCounter = styled.button`
     display: flex;
@@ -95,7 +102,7 @@ export const Container = styled.div`
   z-index: 1000;
   float: right;
   padding: 3rem;
-  @media (max-width: 1024px) {
+  ${mediaQuery.tablet`
     padding: 0;
     width: 100%;
     ${SeedCounter} {
@@ -105,5 +112,5 @@ export const Container = styled.div`
     ${Dropdown} {
       width: 100%;
     }
-  }
+  `};
 `;
