@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Container, Label, Info, Toggle } from "./Song.styled";
-import { offset, distanceBetweenPoints } from "../utils/layout";
+import { offset, distanceBetweenPoints, getPosition } from "../utils/layout";
 import { Point } from "../@types/Point.type";
 
 type Props = {
@@ -10,13 +10,14 @@ type Props = {
   scrollPosition: object;
   size: number;
   added: boolean;
+  index: number;
 };
 
 const MAX_SCALE = 2;
 
 const Song = (props: Props) => {
   const ref = useRef(null);
-  const { song, origin, onToggleSong, size, added } = props;
+  const { song, origin, onToggleSong, size, added, index } = props;
   const onClick = () => onToggleSong(song.id);
   const { album } = song;
 
@@ -31,12 +32,21 @@ const Song = (props: Props) => {
 
   const coverArt = album.images[1].url;
 
+<<<<<<< HEAD:web/src/Song/Song.tsx
   const style = {
     transform: `scale(${limitedDelta}) translateZ(${zIndex}px)`,
+=======
+  const { positionX, positionY } = getPosition(index);
+
+  const style: any = {
+    transform: `scale(${limitedDelta}) translateX(${positionX}px) translateY(${positionY}px)`,
+    zIndex,
+>>>>>>> virtualization:src/Song/Song.tsx
     width: size,
     height: size,
     backgroundImage: `url('${coverArt}')`,
-    backgroundSize: "cover"
+    backgroundSize: "cover",
+    position: "absolute"
   };
 
   return (

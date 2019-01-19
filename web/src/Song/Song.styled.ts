@@ -4,6 +4,8 @@ import { mediaQuery } from "../utils/style";
 
 export const Container = styled.div`
   display: flex;
+  top: 0;
+  left: 0;
   transition: 100ms ease transform;
   border-radius: 1.5rem;
   overflow: hidden;

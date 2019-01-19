@@ -1,6 +1,9 @@
 import styled from "styled-components";
+<<<<<<< HEAD:web/src/TopTracks/TopTracks.styled.ts
 import { SIZES } from "../constants/size";
 import { mediaQuery } from "../utils/style";
+=======
+>>>>>>> virtualization:src/TopTracks/TopTracks.styled.ts
 
 export const Wrapper = styled.div`
   width: 50rem;
@@ -13,10 +16,9 @@ export const Wrapper = styled.div`
 `;
 
 export const Content = styled.div`
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(auto-fill, ${SIZES.BIG}px);
+  position: relative;
   width: 1200px;
+  height: 2000px;
   color: white;
   transform-style: preserve-3d;
   cursor: grab;
@@ -25,8 +27,12 @@ export const Content = styled.div`
   }
   ${mediaQuery.mobile`
     width: 800px;
+<<<<<<< HEAD:web/src/TopTracks/TopTracks.styled.ts
     grid-template-columns: repeat(auto-fill, ${SIZES.SMALL}px);
     `};
+=======
+  }
+>>>>>>> virtualization:src/TopTracks/TopTracks.styled.ts
 `;
 
 export const Overlay = styled.div`

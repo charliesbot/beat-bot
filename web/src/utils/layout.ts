@@ -28,3 +28,9 @@ export const distanceBetweenPoints = (point1?: Point, point2?: Point) => {
   const y = Math.pow(point1.y - point2.y, 2);
   return Math.sqrt(x + y);
 };
+
+export const getPosition = (index: number) => {
+  const positionX = 200 * (index % 6);
+  const positionY = 200 * Math.floor(index / 6);
+  return { positionX, positionY };
+};

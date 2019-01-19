@@ -32,3 +32,7 @@ export const useOrigin = () => {
   }, []);
   return origin;
 };
+
+export const useIntersectionObserver = () => {
+  const [isVisible, setIsVisible] = useState(true);
+};
