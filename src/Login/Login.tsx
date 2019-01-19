@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import { openLoginPopup } from "./Login.utils";
-import { Container, LoginButton, SpotifyIcon } from "./Login.styled";
+import {
+  Header,
+  Container,
+  Overlay,
+  LoginButton,
+  SpotifyIcon
+} from "./Login.styled";
 
 type Props = {
   requestLogin: () => void;
@@ -25,6 +31,7 @@ const Login = (props: Props) => {
       .substr(1)
       .split("&")[0]
       .split("=")[1];
+
     if (token) {
       window.opener.spotifyCallback(token);
     }
@@ -32,10 +39,16 @@ const Login = (props: Props) => {
 
   return (
     <Container>
+      <Header>
+        Mix your favorite songs. <br />
+        Find your next playlist. <br />
+        Fall in love. Again.
+      </Header>
       <LoginButton onClick={triggerLogin(requestLogin)}>
         <SpotifyIcon size="6rem" />
         Login with Spotify
       </LoginButton>
+      <Overlay />
     </Container>
   );
 };

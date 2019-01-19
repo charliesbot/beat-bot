@@ -32,8 +32,7 @@ const Song = (props: Props) => {
   const coverArt = album.images[1].url;
 
   const style = {
-    transform: `scale(${limitedDelta})`,
-    zIndex,
+    transform: `scale(${limitedDelta}) translateZ(${zIndex}px)`,
     width: size,
     height: size,
     backgroundImage: `url('${coverArt}')`,

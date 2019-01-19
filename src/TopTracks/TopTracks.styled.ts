@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { SIZES } from "../constants/size";
+import { mediaQuery } from "../utils/style";
 
 export const Wrapper = styled.div`
   width: 50rem;
@@ -17,10 +18,11 @@ export const Content = styled.div`
   grid-template-columns: repeat(auto-fill, ${SIZES.BIG}px);
   width: 1200px;
   color: white;
-  @media (max-width: 400px) {
+  transform-style: preserve-3d;
+  ${mediaQuery.mobile`
     width: 800px;
     grid-template-columns: repeat(auto-fill, ${SIZES.SMALL}px);
-  }
+    `};
 `;
 
 export const Overlay = styled.div`

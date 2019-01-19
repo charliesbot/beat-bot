@@ -1,8 +1,9 @@
 import { useLayoutEffect, useState } from "react";
 import debounce from "lodash/fp/debounce";
 import { getCenter } from "../utils/layout";
+import { sizes } from "../utils/style";
 
-const query = "(max-width: 400px)";
+const query = `(max-width: ${sizes.mobile}px)`;
 
 export const useMobileDetector = () => {
   const [matches, setMatches] = useState(window.matchMedia(query).matches);

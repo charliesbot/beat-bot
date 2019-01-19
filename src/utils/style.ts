@@ -1,7 +1,7 @@
 import { css } from "styled-components";
 
-const sizes: any = {
-  mobile: 400,
+export const sizes: any = {
+  mobile: 500,
   tablet: 1024
 };
 
