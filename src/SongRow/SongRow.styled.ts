@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import prop from "lodash/fp/prop";
 
 export const AlbumArt = styled.img`
   width: 20rem;
@@ -20,11 +21,13 @@ export const Details = styled.div`
   }
 `;
 
-export const Row = styled.li`
+export const Row = styled.li<{ height?: number }>`
   display: flex;
   padding: 2rem;
   list-style: none;
   align-items: center;
+  color: inherit;
+  height: ${prop("height")}px;
   ${AlbumArt} + ${Details} {
     margin-left: 4rem;
   }

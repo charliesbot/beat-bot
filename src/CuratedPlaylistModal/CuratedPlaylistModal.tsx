@@ -19,6 +19,13 @@ const CuratedPlaylistModal = (props: any) => {
     createPlaylist
   } = props;
 
+  const savePlaylist = () => {
+    const playlistName = prompt("Choose a name for this playlist");
+    if (playlistName) {
+      createPlaylist({ playlistName });
+    }
+  };
+
   useEffect(() => {
     requestGetRecommendations({ seedTracks: Array.from(seedSongs) });
   }, []);
@@ -34,7 +41,7 @@ const CuratedPlaylistModal = (props: any) => {
             <SongRow song={song} key={song.id} />
           ))}
         </Body>
-        <Footer onClick={createPlaylist}>Create Playlist</Footer>
+        <Footer onClick={savePlaylist}>Save Playlist to Spotify</Footer>
       </Container>
     </Overlay>,
     document.body

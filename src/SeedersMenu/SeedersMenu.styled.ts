@@ -1,29 +1,42 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { darken } from "polished";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { mediaQuery } from "../utils/style";
 
+const arrowAnimation = ({ isOpen }: { isOpen: boolean }) => {
+  if (isOpen) {
+    return css`
+      transform: rotate(180deg);
+    `;
+  }
+  return css`
+    transform: rotate(0deg);
+  `;
+};
+
 export const ArrowIcon = styled(MdKeyboardArrowDown)`
   position: absolute;
-  right: 3rem;
+  right: 5rem;
+  transition: ease transform 200ms;
+  ${arrowAnimation};
+`;
+
+export const EmptyPlaceholder = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #022f4e;
 `;
 
 export const SeedCounter = styled.button`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    padding: 2rem 8rem;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    color: #78619E;
-    width: 200px;
-    flex-shrink: 0;
-    background-color: white;
-    margin-left: auto;
-    transition: color .3s;
-    border-radius: 2rem;
-    box-shadow: 2px 3px 4px 1px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  outline: none;
 }
 `;
 
@@ -54,15 +67,12 @@ export const Row = styled.li`
   }
 `;
 
-export const Dropdown = styled.ul`
-  width: 100rem;
-  padding: 0;
-  margin-top: 1rem;
-  background-color: white;
-  border-radius: 2rem;
-  padding: 0;
-  box-shadow: 2px 3px 4px 1px rgba(0, 0, 0, 0.2);
+export const Body = styled.ul`
+  color: black;
   overflow: hidden;
+  background: white;
+  margin: 0;
+  padding: 3rem;
 `;
 
 export const BaseButton = styled.button`
@@ -84,32 +94,45 @@ export const RemoveButton = styled(BaseButton)`
 `;
 
 export const RecommendationsButton = styled(BaseButton)`
+  --recommendation-color: #0e0e6f;
   width: 100%;
   height: 13rem;
-  background-color: #483a5d;
+  background-color: var(--recommendation-color);
   font-weight: bold;
   color: white;
   transition: ease all 200ms;
-  &:hover {
-    background-color: #9a8eac;
+  &:hover:not(:disabled) {
+    background-color: ${darken(0.1, "#0e0e6f")};
+  }
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
   }
 `;
 
-export const Container = styled.div`
+export const Container = styled.section`
   display: flex;
   flex-direction: column;
-  position: relative;
+  color: black;
+  position: fixed;
+  overflow: hidden;
+  margin: 3rem;
+  width: 100rem;
   z-index: 1000;
-  float: right;
-  padding: 3rem;
+  color: white;
+  box-shadow: 2px 3px 4px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 1.5rem;
   ${mediaQuery.tablet`
     padding: 0;
+    margin: 0;
     width: 100%;
     ${SeedCounter} {
+      width: 80%;
       margin: 4rem auto;
-      border-radius: 6rem;
+      padding: 1.5rem;
+      border-radius: 1.5rem;
     }
-    ${Dropdown} {
+    ${Body} {
       width: 100%;
     }
   `};

@@ -19,6 +19,10 @@ export const Content = styled.div`
   width: 1200px;
   color: white;
   transform-style: preserve-3d;
+  cursor: grab;
+  &:active {
+    cursor: grabbing;
+  }
   ${mediaQuery.mobile`
     width: 800px;
     grid-template-columns: repeat(auto-fill, ${SIZES.SMALL}px);

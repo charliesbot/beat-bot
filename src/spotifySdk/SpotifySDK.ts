@@ -51,9 +51,9 @@ const SpotifySDK = {
     });
     return await response.json();
   },
-  createPlaylist: async (userId: string) => {
+  createPlaylist: async (userId: string, playlistName: string) => {
     const body = {
-      name: "Playlist made by Mozika",
+      name: playlistName,
       description: "🎧",
       public: false
     };
@@ -74,7 +74,6 @@ const SpotifySDK = {
       body,
       method: "POST"
     });
-    debugger;
     return await response.json();
   }
 };
