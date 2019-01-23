@@ -37,6 +37,7 @@ export const SeedCounter = styled.button`
   cursor: pointer;
   border: none;
   outline: none;
+  background-color: white;
 }
 `;
 
