@@ -9,6 +9,8 @@ export const Header = styled.h1`
 
 export const SpotifyIcon = styled(FaSpotify)`
   margin-right: 2rem;
+  height: 6rem;
+  width: 6rem;
 `;
 
 export const Overlay = styled.section`

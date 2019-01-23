@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
-import { mediaQuery, textOverflow } from "../utils/style";
+import { ellipsis } from "polished";
+import { mediaQuery } from "../utils/style";
 
 export const Container = styled.div`
   display: flex;
@@ -16,10 +17,10 @@ export const Info = styled.section`
   flex-direction: column;
   justify-content: center;
   flex: 1;
-  width: 70%;
-  .songTitle {
-    ${textOverflow};
-    max-width: 90%;
+  max-width: 70%;
+  .songTitle,
+  .songArtist {
+    ${ellipsis("90%")};
   }
 `;
 

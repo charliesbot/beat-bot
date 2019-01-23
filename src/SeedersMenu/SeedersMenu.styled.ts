@@ -119,6 +119,7 @@ export const Container = styled.section`
   margin: 3rem;
   width: 100rem;
   z-index: 1000;
+  transform: translateZ(1000px);
   color: white;
   box-shadow: 2px 3px 4px 1px rgba(0, 0, 0, 0.2);
   border-radius: 1.5rem;

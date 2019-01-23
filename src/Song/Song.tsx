@@ -45,7 +45,7 @@ const Song = (props: Props) => {
         <Label>
           <Info>
             <strong className="songTitle">{song.name}</strong>
-            <span>{song.artist}</span>
+            <span className="songArtist">{song.artist}</span>
           </Info>
           <Toggle onClick={onClick} added={added}>
             {added ? "Remove" : "Add"}
