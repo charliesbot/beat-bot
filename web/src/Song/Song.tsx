@@ -17,6 +17,7 @@ const MAX_SCALE = 2;
 
 const Song = (props: Props) => {
   const ref = useRef(null);
+
   const { song, origin, onToggleSong, size, added, index } = props;
   const onClick = () => onToggleSong(song.id);
   const { album } = song;
@@ -32,21 +33,13 @@ const Song = (props: Props) => {
 
   const coverArt = album.images[1].url;
 
-<<<<<<< HEAD:web/src/Song/Song.tsx
-  const style = {
-    transform: `scale(${limitedDelta}) translateZ(${zIndex}px)`,
-=======
   const { positionX, positionY } = getPosition(index);
 
-  const style: any = {
-    transform: `scale(${limitedDelta}) translateX(${positionX}px) translateY(${positionY}px)`,
-    zIndex,
->>>>>>> virtualization:src/Song/Song.tsx
+  const style = {
+    transform: `translate3d(${positionX}px, ${positionY}px, ${zIndex}px) scale3d(${limitedDelta}, ${limitedDelta}, ${limitedDelta})`,
     width: size,
     height: size,
-    backgroundImage: `url('${coverArt}')`,
-    backgroundSize: "cover",
-    position: "absolute"
+    backgroundImage: `url('${coverArt}')`
   };
 
   return (

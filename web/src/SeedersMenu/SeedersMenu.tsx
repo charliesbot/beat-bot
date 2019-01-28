@@ -64,7 +64,7 @@ const SeedersMenu = (props: Props) => {
             })}
           </Body>
           <RecommendationsButton onClick={onOpenModal} disabled={isEmpty}>
-            Mix!
+            Find recommendations!
           </RecommendationsButton>
         </>
       )}

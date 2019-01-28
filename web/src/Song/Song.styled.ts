@@ -6,7 +6,9 @@ export const Container = styled.div`
   display: flex;
   top: 0;
   left: 0;
-  transition: 100ms ease transform;
+  position: absolute;
+  transition: 200ms ease-in transform;
+  background-size: cover;
   border-radius: 1.5rem;
   overflow: hidden;
   will-change: transform;

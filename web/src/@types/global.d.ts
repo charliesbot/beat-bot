@@ -3,3 +3,5 @@ interface Window {
   open: any;
   spotifyCallback: any;
 }
+
+declare module "react-hook-intersection-observer";

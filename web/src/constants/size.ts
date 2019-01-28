@@ -1,4 +1,4 @@
 export const SIZES = {
-  SMALL: 100,
+  SMALL: 150,
   BIG: 200
 };

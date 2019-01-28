@@ -33,6 +33,17 @@ export const useOrigin = () => {
   return origin;
 };
 
-export const useIntersectionObserver = () => {
-  const [isVisible, setIsVisible] = useState(true);
+export const useIntersectionObserver = (ref: React.RefObject<HTMLElement>) => {
+  const [isIntersection, setIntersection] = useState(false);
+  useLayoutEffect(() => {
+    if (ref.current) {
+      const observer = new IntersectionObserver(([entry]) => {
+        setIntersection(entry.isIntersecting);
+      });
+
+      observer.observe(ref.current);
+    }
+  }, []);
+
+  return isIntersection;
 };

@@ -38,6 +38,7 @@ export const SeedCounter = styled.button`
   border: none;
   outline: none;
   background-color: white;
+  box-shadow: 2px 3px 4px 1px rgba(0, 0, 0, 0.2);
 }
 `;
 
@@ -107,7 +108,7 @@ export const RecommendationsButton = styled(BaseButton)`
   }
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.8;
+    background-color: grey;
   }
 `;
 
@@ -122,7 +123,6 @@ export const Container = styled.section`
   z-index: 1000;
   transform: translateZ(1000px);
   color: white;
-  box-shadow: 2px 3px 4px 1px rgba(0, 0, 0, 0.2);
   border-radius: 1.5rem;
   ${mediaQuery.tablet`
     padding: 0;
