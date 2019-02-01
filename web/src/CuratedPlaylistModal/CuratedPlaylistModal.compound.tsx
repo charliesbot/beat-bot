@@ -1,7 +1,8 @@
-import { GET_RECOMMENDATION_SEED } from "../actions/recommendationSeedActions";
-import { CREATE_PLAYLIST } from "../actions/createPlaylistAction";
 import { bindActionCreators, Dispatch } from "redux";
 import { connect } from "react-redux";
+import { connectModal } from "redux-modal";
+import { GET_RECOMMENDATION_SEED } from "../actions/recommendationSeedActions";
+import { CREATE_PLAYLIST } from "../actions/createPlaylistAction";
 import CuratedPlaylistModal from "./CuratedPlaylistModal";
 
 const mapStateToProps = (state: any) => {
@@ -19,7 +20,11 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   return bindActionCreators(dispatchActions, dispatch);
 };
 
+const ConnectedModal = connectModal({ name: "curatedPlaylist" })(
+  CuratedPlaylistModal
+);
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CuratedPlaylistModal);
+)(ConnectedModal);

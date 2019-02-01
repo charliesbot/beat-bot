@@ -9,15 +9,11 @@ const sagaMiddleware = createSagaMiddleware();
 export const history = createBrowserHistory();
 
 // dev tools middleware
-// const reduxDevTools =
-// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   rootReducer(history),
-  compose(
-    applyMiddleware(routerMiddleware(history), sagaMiddleware)
-    // reduxDevTools
-  )
+  composeEnhancers(applyMiddleware(routerMiddleware(history), sagaMiddleware))
 );
 
 sagaMiddleware.run(rootSaga);

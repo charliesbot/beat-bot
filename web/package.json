@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@types/lodash": "^4.14.119",
-    "better-scroll": "^1.13.4",
+    "clipboard": "^2.0.4",
     "connected-react-router": "^6.1.0",
     "lodash": "^4.17.11",
     "polished": "^2.3.3",
@@ -16,6 +16,7 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.3",
     "redux": "^4.0.1",
+    "redux-modal": "^3.0.1",
     "redux-saga": "^0.16.2",
     "styled-components": "^4.1.3",
     "styled-normalize": "^8.0.4",

@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import { connectRouter } from "connected-react-router";
+import { reducer as modal } from "redux-modal";
 import { History } from "history";
 import songs from "./songsReducer";
 import topTracks from "./topTracksReducer";
@@ -12,7 +13,8 @@ const rootReducer = (history: History) =>
     songs,
     user,
     topTracks,
-    recommendationSeed
+    recommendationSeed,
+    modal
   });
 
 export default rootReducer;

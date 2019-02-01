@@ -1,23 +1,22 @@
 import React, { useEffect } from "react";
-import ReactDOM from "react-dom";
 import { MdClose } from "react-icons/md";
 import SongRow from "../SongRow";
-import {
-  Footer,
-  Body,
-  Overlay,
-  Container,
-  CloseButton
-} from "./CuratedPlaylistModal.styled";
+import Dialog from "../Dialog";
+import { Footer, Body, CloseButton } from "./CuratedPlaylistModal.styled";
 
 const CuratedPlaylistModal = (props: any) => {
   const {
-    onCloseModal,
-    seedSongs,
+    handleHide,
+    message,
     requestGetRecommendations,
     curatedSongs,
-    createPlaylist
+    createPlaylist,
+    show
   } = props;
+
+  if (!show) {
+    return null;
+  }
 
   const savePlaylist = () => {
     const playlistName = prompt("Choose a name for this playlist");
@@ -27,24 +26,21 @@ const CuratedPlaylistModal = (props: any) => {
   };
 
   useEffect(() => {
-    requestGetRecommendations({ seedTracks: Array.from(seedSongs) });
+    requestGetRecommendations({ seedTracks: Array.from(message.seedSongs) });
   }, []);
 
-  return ReactDOM.createPortal(
-    <Overlay>
-      <Container>
-        <CloseButton onClick={onCloseModal}>
-          <MdClose />
-        </CloseButton>
-        <Body>
-          {curatedSongs.map((song: any) => (
-            <SongRow song={song} key={song.id} />
-          ))}
-        </Body>
-        <Footer onClick={savePlaylist}>Save Playlist to Spotify</Footer>
-      </Container>
-    </Overlay>,
-    document.body
+  return (
+    <Dialog isVisible={show} height={70}>
+      <CloseButton onClick={handleHide}>
+        <MdClose />
+      </CloseButton>
+      <Body>
+        {curatedSongs.map((song: any) => (
+          <SongRow song={song} key={song.id} />
+        ))}
+      </Body>
+      <Footer onClick={savePlaylist}>Save Playlist to Spotify</Footer>
+    </Dialog>
   );
 };
 

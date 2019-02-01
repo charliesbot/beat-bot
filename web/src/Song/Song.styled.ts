@@ -7,9 +7,9 @@ export const Container = styled.div`
   top: 0;
   left: 0;
   position: absolute;
-  transition: 200ms ease-in transform;
+  transition: 100ms ease transform;
   background-size: cover;
-  border-radius: 1.5rem;
+  border-radius: ${props => props.theme.borderRadius};
   overflow: hidden;
   will-change: transform;
   border: none;
@@ -84,6 +84,9 @@ export const Label = styled.div`
     top: 0;
     flex-direction: column;
     width: 100%;
+    ${Toggle} {
+      height: 8rem;
+    }
     ${Toggle}, ${Info} {
       width: 100%;
     }

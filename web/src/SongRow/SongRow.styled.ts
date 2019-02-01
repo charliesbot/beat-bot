@@ -11,9 +11,6 @@ export const Details = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 60%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   font-size: 4rem;
   span {
     margin-top: 1rem;

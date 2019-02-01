@@ -30,7 +30,7 @@ export const LoginButton = styled.button`
   padding: 2rem 8rem;
   cursor: pointer;
   color: white;
-  background-color: #1db954;
+  background-color: ${(props) => props.theme.primary};
   border-radius: 500px;
   transition: all ease 200ms;
   border: none;

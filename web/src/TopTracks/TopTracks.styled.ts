@@ -2,13 +2,13 @@ import styled from "styled-components";
 import { mediaQuery } from "../utils/style";
 
 export const Wrapper = styled.div`
-  width: 50rem;
-  height: 50rem;
+  width: 12.5rem;
+  height: 12.5rem;
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-left: -25rem;
-  margin-top: -25rem;
+  margin-left: -6.25rem;
+  margin-top: -6.25rem;
 `;
 
 export const Content = styled.div`

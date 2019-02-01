@@ -1,4 +1,5 @@
 import { call, takeLatest, put, select } from "redux-saga/effects";
+import { show } from "redux-modal";
 import { CREATE_PLAYLIST } from "../actions/createPlaylistAction";
 import SpotifySDK from "../spotifySdk/SpotifySDK";
 
@@ -20,9 +21,7 @@ function* triggerCreatePlaylist({ payload }: any) {
 
   yield call(() => SpotifySDK.addTracksToPlaylist(playlist.id, uris));
 
-  alert(
-    `Done! Listen to your playlist here: ${playlist.external_urls.spotify}`
-  );
+  yield put(show("shareNewPlaylistModal", { message: { playlist } }));
 }
 
 export function* watchCreatePlaylist() {

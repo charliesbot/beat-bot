@@ -42,33 +42,6 @@ export const SeedCounter = styled.button`
 }
 `;
 
-export const AlbumArt = styled.img`
-  width: 10rem;
-  min-width: 10rem;
-`;
-
-export const Details = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 60%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  span {
-    font-size: 3rem;
-  }
-`;
-
-export const Row = styled.li`
-  display: flex;
-  padding: 2rem;
-  list-style: none;
-  align-items: center;
-  ${AlbumArt} + ${Details} {
-    margin-left: 2rem;
-  }
-`;
-
 export const Body = styled.ul`
   color: black;
   overflow: hidden;
@@ -83,7 +56,7 @@ export const BaseButton = styled.button`
   justify-content: center;
   align-items: center;
   outline: none;
-  --webkit-appearance: none;
+  appearance: none;
   background-color: transparent;
   border: none;
 `;
@@ -99,7 +72,7 @@ export const RecommendationsButton = styled(BaseButton)`
   --recommendation-color: #0e0e6f;
   width: 100%;
   height: 13rem;
-  background-color: var(--recommendation-color);
+  background-color: ${(props) => props.theme.primary};
   font-weight: bold;
   color: white;
   transition: ease all 200ms;
