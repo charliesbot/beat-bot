@@ -22,7 +22,7 @@ const CuratedPlaylistModal = (props: any) => {
   const link = playlist.external_urls.spotify;
 
   return (
-    <Dialog isVisible={false}>
+    <Dialog isVisible={true}>
       <Header>Your playlist is ready!</Header>
       <CopyRow>
         <PlaylistLink href={link} target="_blank">

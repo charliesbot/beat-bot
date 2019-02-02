@@ -1,14 +1,16 @@
-import { bindActionCreators, Dispatch } from "redux";
-import { connect } from "react-redux";
-import { connectModal } from "redux-modal";
 import { GET_RECOMMENDATION_SEED } from "../actions/recommendationSeedActions";
 import { CREATE_PLAYLIST } from "../actions/createPlaylistAction";
+import { bindActionCreators, Dispatch } from "redux";
+import { connect } from "react-redux";
 import CuratedPlaylistModal from "./CuratedPlaylistModal";
 
 const mapStateToProps = (state: any) => {
   const { songs, recommendationSeed } = state;
   return {
-    curatedSongs: recommendationSeed.map((songId: string) => songs[songId])
+    curatedSongs: recommendationSeed.songs.map(
+      (songId: string) => songs[songId]
+    ),
+    isLoading: recommendationSeed.isLoading
   };
 };
 
@@ -17,14 +19,11 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     requestGetRecommendations: GET_RECOMMENDATION_SEED.request,
     createPlaylist: CREATE_PLAYLIST.request
   };
+
   return bindActionCreators(dispatchActions, dispatch);
 };
-
-const ConnectedModal = connectModal({ name: "curatedPlaylist" })(
-  CuratedPlaylistModal
-);
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ConnectedModal);
+)(CuratedPlaylistModal);

@@ -6,9 +6,9 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 110rem;
+  width: 800px;
   height: ${prop("height")}vh;
-  max-height: 70vh;
+  max-height: 90vh;
   border-radius: 4px;
   background-color: white;
   overflow: hidden;

@@ -23,7 +23,9 @@ const TopTracks = (props: any) => {
   });
 
   const onOpenModal = () => {
-    openModal("curatedPlaylist", { message: { seedSongs: selectedSongs } });
+    openModal("createPlaylistWizard", {
+      message: { seedSongs: selectedSongs }
+    });
   };
 
   useLayoutEffect(() => {

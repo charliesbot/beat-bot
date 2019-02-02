@@ -6,6 +6,7 @@ import songs from "./songsReducer";
 import topTracks from "./topTracksReducer";
 import user from "./userReducer";
 import recommendationSeed from "./recommendationSeedReducer";
+import playlistWizard from "./playlistWizardReducer";
 
 const rootReducer = (history: History) =>
   combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = (history: History) =>
     user,
     topTracks,
     recommendationSeed,
+    playlistWizard,
     modal
   });
 

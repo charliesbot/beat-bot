@@ -3,8 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { Container } from "./App.styled";
 import Login from "../Login";
 import TopTracks from "../TopTracks";
-import CuratedPlaylistModal from "../CuratedPlaylistModal";
-import ShareNewPlaylistModal from "../ShareNewPlaylistModal/ShareNewPlaylistModal";
+import CreatePlaylistWizard from "../CreatePlaylistWizard";
 
 const App = () => {
   return (
@@ -13,8 +12,7 @@ const App = () => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/" component={TopTracks} />
       </Switch>
-      <CuratedPlaylistModal />
-      <ShareNewPlaylistModal />
+      <CreatePlaylistWizard />
     </Container>
   );
 };
