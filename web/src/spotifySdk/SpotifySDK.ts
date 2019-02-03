@@ -40,7 +40,7 @@ const SpotifySDK = {
   },
   getTopTracks: async (entity: Entity) => {
     const response = await fetchSpotifyAPI({
-      api: `me/top/${entity}?limit=50`
+      api: `me/top/${entity}?limit=50&time_range=short_term`
     });
     return await response.json();
   },
