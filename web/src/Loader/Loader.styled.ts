@@ -1,4 +1,14 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`;
 
 export const Container = styled.section`
   display: flex;
@@ -13,6 +23,7 @@ export const Spinner = styled.div<{ size: number }>`
   height: ${props => props.size}px;
   border-radius: 50%;
   color: ${props => props.theme.primary};
-  border: solid 30px;
+  border: solid 10px;
   border-left-color: transparent;
+  animation: ${rotate} 1s linear infinite;
 `;

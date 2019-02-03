@@ -5,12 +5,10 @@ import { connect } from "react-redux";
 import CuratedPlaylistModal from "./CuratedPlaylistModal";
 
 const mapStateToProps = (state: any) => {
-  const { songs, recommendationSeed } = state;
+  const { songs, playlistWizard } = state;
   return {
-    curatedSongs: recommendationSeed.songs.map(
-      (songId: string) => songs[songId]
-    ),
-    isLoading: recommendationSeed.isLoading
+    curatedSongs: playlistWizard.songs.map((songId: string) => songs[songId]),
+    isLoading: playlistWizard.isLoading
   };
 };
 

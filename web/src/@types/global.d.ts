@@ -6,3 +6,4 @@ interface Window {
 }
 
 declare module "react-hook-intersection-observer";
+declare module "react-clipboardjs-copy";

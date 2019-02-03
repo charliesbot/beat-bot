@@ -1,1 +1,1 @@
-export { default } from "./PlaylistNameForm";
+export { default } from "./PlaylistNameForm.compound";

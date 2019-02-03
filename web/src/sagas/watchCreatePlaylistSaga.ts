@@ -1,27 +1,30 @@
 import { call, takeLatest, put, select } from "redux-saga/effects";
-import { show } from "redux-modal";
 import { CREATE_PLAYLIST } from "../actions/createPlaylistAction";
 import SpotifySDK from "../spotifySdk/SpotifySDK";
 
-function* triggerCreatePlaylist({ payload }: any) {
+function* triggerCreatePlaylist() {
   yield put(CREATE_PLAYLIST.started());
-  const { user, songs, recommendedSongs } = yield select((state: any) => {
-    return {
-      user: state.user,
-      songs: state.songs,
-      recommendedSongs: state.recommendationSeed
-    };
-  });
+  const { user, songs, recommendedSongs, playlistName } = yield select(
+    (state: any) => {
+      return {
+        user: state.user,
+        songs: state.songs,
+        recommendedSongs: state.playlistWizard.songs,
+        playlistName: state.playlistWizard.title,
+        playlistDescription: state.playlistWizard.playlistDescription
+      };
+    }
+  );
 
   const uris = recommendedSongs.map((r: any) => songs[r].uri);
 
   const playlist = yield call(() =>
-    SpotifySDK.createPlaylist(user.id, payload.playlistName)
+    SpotifySDK.createPlaylist(user.id, playlistName)
   );
 
   yield call(() => SpotifySDK.addTracksToPlaylist(playlist.id, uris));
 
-  yield put(show("shareNewPlaylistModal", { message: { playlist } }));
+  yield put(CREATE_PLAYLIST.completed({ playlist }));
 }
 
 export function* watchCreatePlaylist() {

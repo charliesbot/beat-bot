@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container, Input, Description } from "./PlaylistNameForm.styled";
+import WizardFooter from "../CreatePlaylistWizard.Footer";
 
-const PlaylistNameForm = () => {
-  const [playlistName, setPlaylistName] = useState("");
-  const onChange = (evt: any) => setPlaylistName(evt.target.value);
+const PlaylistNameForm = (props: any) => {
+  const onChangeInput = (field: string) => (evt: any) =>
+    props.onChange({ [field]: evt.target.value });
 
   return (
     <Container>
       <Input
         required
-        value={playlistName}
-        onChange={onChange}
-        placeholder="The best playlist eveeeeeer"
+        value={props.title}
+        onChange={onChangeInput("title")}
+        placeholder="Eg. Best title ever"
       />
-      <Description placeholder="Add a nice description" />
+      <Description placeholder="Eg. These songs are great!" />
+      <WizardFooter />
     </Container>
   );
 };

@@ -5,13 +5,13 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  padding: 4rem;
 `;
 
 export const Body = styled.section`
-  flex: 1;
   display: grid;
   grid-template-columns: 50% 50%;
-  padding: 4rem;
+  flex: 1;
   overflow: auto;
   ${mediaQuery.mobile`
       grid-template-columns: 100%;

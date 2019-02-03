@@ -1,39 +1,56 @@
-import React from "react";
-import Dialog from "../Dialog";
+import React, { useEffect } from "react";
+import ReactClipboard from "react-clipboardjs-copy";
 import {
-  Header,
+  Input,
+  RoundedButton,
+  Container,
   CopyRow,
-  Footer,
-  PlaylistLink,
-  CloseButton,
-  OpenButton
+  CopyButton,
+  SkipButton
 } from "./ShareNewPlaylistModal.styled";
+import Loader from "../Loader";
 
 const CuratedPlaylistModal = (props: any) => {
-  const { handleHide, message, show } = props;
+  const { createPlaylist, playlist, isLoading, handleHide } = props;
 
-  // const { playlist } = message;
-  const playlist = {
-    external_urls: {
-      spotify: "https://dribbble.com/shots/3425305-Share-Private-Link"
-    }
-  };
+  useEffect(() => {
+    createPlaylist();
+  }, []);
+
+  if (isLoading || !playlist) {
+    return (
+      <Container>
+        <Loader size={50} />
+      </Container>
+    );
+  }
 
   const link = playlist.external_urls.spotify;
 
   return (
-    <Dialog isVisible={true}>
-      <Header>Your playlist is ready!</Header>
-      <CopyRow>
-        <PlaylistLink href={link} target="_blank">
-          {link}
-        </PlaylistLink>
-      </CopyRow>
-      <Footer>
-        <CloseButton>Close</CloseButton>
-        <OpenButton as="a">Open Playlist</OpenButton>
-      </Footer>
-    </Dialog>
+    <>
+      <Container>
+        <h1>Your new playlist is ready!</h1>
+        <CopyRow>
+          <Input value={link} readOnly />
+          <ReactClipboard
+            text={link}
+            onSuccess={() => alert("Copied to clipboard!")}
+          >
+            <CopyButton>Copy Link</CopyButton>
+          </ReactClipboard>
+        </CopyRow>
+        <RoundedButton
+          as="a"
+          target="_blank"
+          className="open-playlist-button"
+          href={link}
+        >
+          Open Playlist
+        </RoundedButton>
+        <SkipButton onClick={handleHide}>Close and continue</SkipButton>
+      </Container>
+    </>
   );
 };
 

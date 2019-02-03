@@ -5,7 +5,6 @@ import { History } from "history";
 import songs from "./songsReducer";
 import topTracks from "./topTracksReducer";
 import user from "./userReducer";
-import recommendationSeed from "./recommendationSeedReducer";
 import playlistWizard from "./playlistWizardReducer";
 
 const rootReducer = (history: History) =>
@@ -14,7 +13,6 @@ const rootReducer = (history: History) =>
     songs,
     user,
     topTracks,
-    recommendationSeed,
     playlistWizard,
     modal
   });

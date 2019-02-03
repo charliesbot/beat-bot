@@ -19,7 +19,7 @@ export const Description = styled.textarea`
   margin-top: 4rem;
 `;
 
-export const Container = styled.section`
+export const Container = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;

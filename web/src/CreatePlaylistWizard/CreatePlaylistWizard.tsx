@@ -1,18 +1,18 @@
 import React from "react";
-import { MdMusicNote, MdEdit, MdSend } from "react-icons/md";
+import { MdMusicNote, MdEdit, MdSend, MdClose } from "react-icons/md";
 import Dialog from "../Dialog";
 import Stepper from "../Stepper";
 import CuratedPlaylist from "../CuratedPlaylistModal";
-import WizardFooter from "../CreatePlaylistWizard.Footer";
 import PlaylistNameForm from "../PlaylistNameForm";
-import { Header, Title } from "./CreatePlaylist.styled";
+import ShareNewPlaylistModal from "../ShareNewPlaylistModal";
+import { Header, Title, CloseButton } from "./CreatePlaylist.styled";
 
 const steps = [
   {
     title: "Preview your songs",
     children: <MdMusicNote />
   },
-  { title: "Choose a name", children: <MdEdit /> },
+  { title: "Choose a name for your playlist", children: <MdEdit /> },
   {
     title: "Rock your new playlist!",
     children: <MdSend />
@@ -21,25 +21,29 @@ const steps = [
 
 const renderStep = ({ step, ...props }: any) => {
   switch (step) {
-    case 0: {
+    case 1: {
       return <CuratedPlaylist {...props} />;
     }
-    case 1: {
+    case 2: {
       return <PlaylistNameForm {...props} />;
+    }
+    case 3: {
+      return <ShareNewPlaylistModal {...props} />;
     }
   }
 };
 
 const CreatePlaylistWizard = (props: any) => {
-  console.log(props);
   return (
     <Dialog isVisible={props.show}>
+      <CloseButton onClick={props.handleHide}>
+        <MdClose />
+      </CloseButton>
       <Header>
-        <Title>{steps[props.step].title}</Title>
-        <Stepper activeStep={props.step + 1} steps={steps} />
+        <Title>{steps[props.step - 1].title}</Title>
+        <Stepper activeStep={props.step} steps={steps} />
       </Header>
       {renderStep(props)}
-      <WizardFooter />
     </Dialog>
   );
 };
