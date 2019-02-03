@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@types/lodash": "^4.14.119",
+    "better-scroll": "^1.14.1",
     "connected-react-router": "^6.1.0",
     "lodash": "^4.17.11",
     "polished": "^2.3.3",
