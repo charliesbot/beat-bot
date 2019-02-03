@@ -33,7 +33,7 @@ const Song = (props: Props) => {
 
   const coverArt = album.images[1].url;
 
-  const { positionX, positionY } = getPosition(index);
+  const { positionX, positionY } = getPosition(index, size);
 
   const style = {
     transform: `translate3d(${positionX}px, ${positionY}px, ${zIndex}px) scale3d(${limitedDelta}, ${limitedDelta}, ${limitedDelta})`,

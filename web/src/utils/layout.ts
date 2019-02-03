@@ -29,8 +29,8 @@ export const distanceBetweenPoints = (point1?: Point, point2?: Point) => {
   return Math.sqrt(x + y);
 };
 
-export const getPosition = (index: number) => {
-  const positionX = 200 * (index % 6);
-  const positionY = 200 * Math.floor(index / 6);
+export const getPosition = (index: number, size: number) => {
+  const positionX = size * (index % 6);
+  const positionY = size * Math.floor(index / 6);
   return { positionX, positionY };
 };
