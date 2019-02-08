@@ -22,7 +22,7 @@ export const Overlay = styled.section`
   left: 0;
 `;
 
-export const LoginButton = styled.button`
+export const LoginButton = styled.a`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -30,7 +30,7 @@ export const LoginButton = styled.button`
   padding: 2rem 8rem;
   cursor: pointer;
   color: white;
-  background-color: ${(props) => props.theme.primary};
+  background-color: ${props => props.theme.primary};
   border-radius: 500px;
   transition: all ease 200ms;
   border: none;
