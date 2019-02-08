@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Container, Label, Info, Toggle } from "./Song.styled";
-import { offset, distanceBetweenPoints, getPosition } from "../utils/layout";
-import { Point } from "../@types/Point.type";
+import { offset, distanceBetweenPoints, getPosition } from "../../utils/layout";
+import { Point } from "../../@types/Point.type";
 
 type Props = {
   song: any;

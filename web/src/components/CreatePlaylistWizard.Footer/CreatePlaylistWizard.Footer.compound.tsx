@@ -1,6 +1,6 @@
 import { bindActionCreators, Dispatch } from "redux";
 import { connect } from "react-redux";
-import { NEXT_STEP } from "../actions/playlistWizardActions";
+import { NEXT_STEP } from "../../actions/playlistWizardActions";
 import CreatePlaylistWizardFooter from "./CreatePlaylistWizard.Footer";
 
 const mapDispatchToProps = (dispatch: Dispatch) => {

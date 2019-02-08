@@ -1,9 +1,9 @@
 import { bindActionCreators, Dispatch } from "redux";
-import { show } from "redux-modal";
-import { GET_TOP_TRACKS } from "../actions/topTracksActions";
-import { GET_RECOMMENDATION_SEED } from "../actions/recommendationSeedActions";
-import { GET_USER } from "../actions/auth";
 import { connect } from "react-redux";
+import { show } from "redux-modal";
+import { GET_TOP_TRACKS } from "../../actions/topTracksActions";
+import { GET_RECOMMENDATION_SEED } from "../../actions/recommendationSeedActions";
+import { GET_USER } from "../../actions/auth";
 import TopTracks from "./TopTracks";
 
 const mapStateToProps = (state: any) => {

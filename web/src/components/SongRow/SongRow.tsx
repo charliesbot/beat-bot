@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, AlbumArt, Details } from "./SongRow.styled";
-import MediaTracker from "../spotifySdk/MediaTracker";
+import MediaTracker from "../../spotifySdk/MediaTracker";
 
 const SongRow = ({ song, right, height }: any) => {
   return (

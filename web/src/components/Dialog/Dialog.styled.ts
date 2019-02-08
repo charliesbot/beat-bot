@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { mediaQuery } from "../utils/style";
+import { mediaQuery } from "../../utils/style";
 import prop from "lodash/fp/prop";
 
 export const Container = styled.div`

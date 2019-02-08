@@ -1,12 +1,12 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import BScroll, { Position } from "better-scroll";
-import { SIZES } from "../constants/size";
 import throttle from "lodash/fp/throttle";
-import { useMobileDetector, useOrigin } from "../hooks";
+import { SIZES } from "../../constants/size";
+import { useMobileDetector, useOrigin } from "../../hooks";
 import { Wrapper, Content, Container } from "./TopTracks.styled";
 import SeedersMenu from "../SeedersMenu";
 import Song from "../Song";
-import { Song as SongType } from "../@types/Song.type";
+import { Song as SongType } from "../../@types/Song.type";
 
 let bscroll: BScroll;
 

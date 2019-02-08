@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { mediaQuery } from "../utils/style";
+import { mediaQuery } from "../../utils/style";
 
 export const Wrapper = styled.div`
   width: 12.5rem;

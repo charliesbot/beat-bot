@@ -5,7 +5,7 @@ import { ThemeProvider } from "styled-components";
 import { Provider } from "react-redux";
 import GlobalStyle from "./globalStyle";
 import store, { history } from "./store";
-import App from "./App";
+import App from "./components/App";
 import theme from "./theme";
 import * as serviceWorker from "./serviceWorker";
 

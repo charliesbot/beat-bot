@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { darken } from "polished";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { mediaQuery } from "../utils/style";
+import { mediaQuery } from "../../utils/style";
 
 const arrowAnimation = ({ isOpen }: { isOpen: boolean }) => {
   if (isOpen) {
@@ -72,7 +72,7 @@ export const RecommendationsButton = styled(BaseButton)`
   --recommendation-color: #0e0e6f;
   width: 100%;
   height: 13rem;
-  background-color: ${(props) => props.theme.primary};
+  background-color: ${props => props.theme.primary};
   font-weight: bold;
   color: white;
   transition: ease all 200ms;

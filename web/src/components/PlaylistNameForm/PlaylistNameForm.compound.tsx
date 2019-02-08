@@ -1,6 +1,6 @@
 import { bindActionCreators, Dispatch } from "redux";
 import { connect } from "react-redux";
-import { SET_PLAYLIST_DATA } from "../actions/playlistWizardActions";
+import { SET_PLAYLIST_DATA } from "../../actions/playlistWizardActions";
 import PlaylistNameForm from "./PlaylistNameForm";
 
 const mapStateToProps = (state: any) => {

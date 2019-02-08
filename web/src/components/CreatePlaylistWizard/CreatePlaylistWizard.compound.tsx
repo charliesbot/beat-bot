@@ -1,7 +1,7 @@
 import { bindActionCreators, Dispatch } from "redux";
 import { connect } from "react-redux";
 import { connectModal } from "redux-modal";
-import { NEXT_STEP } from "../actions/playlistWizardActions";
+import { NEXT_STEP } from "../../actions/playlistWizardActions";
 import CreatePlaylistWizard from "./CreatePlaylistWizard";
 
 const mapStateToProps = (state: any) => {

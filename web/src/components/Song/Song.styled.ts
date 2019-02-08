@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { ellipsis } from "polished";
-import { mediaQuery } from "../utils/style";
+import { mediaQuery } from "../../utils/style";
 
 export const Container = styled.div`
   display: flex;

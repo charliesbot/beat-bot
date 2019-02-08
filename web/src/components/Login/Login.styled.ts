@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { FaSpotify } from "react-icons/fa";
-import image from "../images/audience.jpeg";
-import { mediaQuery } from "../utils/style";
+import image from "../../images/audience.jpeg";
+import { mediaQuery } from "../../utils/style";
 
 export const Header = styled.h1`
   line-height: 1.4;
@@ -30,7 +30,7 @@ export const LoginButton = styled.button`
   padding: 2rem 8rem;
   cursor: pointer;
   color: white;
-  background-color: ${(props) => props.theme.primary};
+  background-color: ${props => props.theme.primary};
   border-radius: 500px;
   transition: all ease 200ms;
   border: none;
