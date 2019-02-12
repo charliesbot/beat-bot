@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "netlify-lambda serve src/",
-    "build": "netlify-lambda build src/"
+    "serve": "netlify-lambda serve ./src",
+    "build": "netlify-lambda build ./src",
+    "postinstall": "yarn run build"
   },
   "author": "",
   "devDependencies": {
