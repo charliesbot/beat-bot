@@ -8,4 +8,5 @@
 [build]
   base    = ""
   publish = "web/build"
+  functions = "lambda"
   command = "npm i -g yarn@1.12.3 && make build-web"
