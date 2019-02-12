@@ -6,7 +6,7 @@ build-web:
 	yarn build
 
 build-lambda:
-	cd lambda/; \
+	cd functions/; \
 	yarn; \
 	yarn build
 
