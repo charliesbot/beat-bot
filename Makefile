@@ -1,4 +1,4 @@
-.PHONY: build-web
+.PHONY: build-web build-lambda
 
 build-web:
 	cd web/; \
