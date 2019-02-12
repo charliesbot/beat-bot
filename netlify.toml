@@ -9,4 +9,4 @@
   base    = ""
   publish = "web/build"
   functions = "lambda/functions"
-  command = "npm i -g yarn@1.12.3 && make build-web"
+  command = "npm i -g yarn@1.12.3 && make build-web && make build-lambda"
