@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { openLoginPopup } from "./Login.utils";
 import {
   Header,
   Container,
@@ -9,19 +8,7 @@ import {
 } from "./Login.styled";
 
 type Props = {
-  requestLogin: () => void;
-};
-
-type RequestLogin = (_: { token: string }) => void;
-
-const triggerLogin = (requestLogin: RequestLogin) => () => {
-  const popup = openLoginPopup();
-  window.spotifyCallback = async (token: string) => {
-    if (popup) {
-      popup.close();
-      requestLogin({ token });
-    }
-  };
+  requestLogin: (_: any) => void;
 };
 
 const Login = (props: Props) => {
@@ -33,7 +20,7 @@ const Login = (props: Props) => {
       .split("=")[1];
 
     if (token) {
-      window.opener.spotifyCallback(token);
+      requestLogin({ token });
     }
   });
 
@@ -44,7 +31,7 @@ const Login = (props: Props) => {
         Find your next playlist. <br />
         Fall in love. Again.
       </Header>
-      <LoginButton onClick={triggerLogin(requestLogin)}>
+      <LoginButton href="/.netlify/functions/auth">
         <SpotifyIcon size="6rem" />
         Login with Spotify
       </LoginButton>

@@ -1,4 +1,3 @@
-import getUserData from "./utils/getUserData";
 import oauth2, { config } from "./utils/oauth";
 
 /* Function to handle intercom auth callback */
@@ -13,38 +12,23 @@ const handler = async (event, context, callback) => {
     redirect_uri: config.redirect_uri
   });
 
-  const token = oauth2.accessToken.create(maybeToken);
+  const result = oauth2.accessToken.create(maybeToken);
 
-  console.log("accessToken", token.token.access_token);
-
-  const user = await getUserData(token.token.access_token);
-
-  console.log("auth token", token);
-  // Do stuff with user data
-  console.log("user data", user);
-  // Do other custom stuff
-  console.log("state", state);
   // return results to browser
-  return callback(null, {
-    statusCode: 200,
-    body: JSON.stringify({
-      user,
-      token
-    })
-  });
+  const redirectUri = `${config.redirect_frontend}#access_token=${
+    result.token.access_token
+  }`;
 
-  // console.log("Access Token Error", error.message);
-  // console.log(error);
-  // return callback(null, {
-  // statusCode: error.statusCode || 500,
-  // body: JSON.stringify({
-  // error: error.message
-  // })
-  // });
+  const response = {
+    statusCode: 302,
+    headers: {
+      Location: redirectUri,
+      "Cache-Control": "no-cache" // Disable caching of this response
+    },
+    body: "" // return body for local dev
+  };
 
-  // .catch(error => {
-
-  // });
+  return callback(null, response);
 };
 
 export { handler };

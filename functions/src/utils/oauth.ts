@@ -3,6 +3,7 @@ import "dotenv/config";
 
 const spotifyApi = "https://accounts.spotify.com";
 const siteUrl = process.env.URL || "http://localhost:9000";
+const frontendUrl = process.env.URL || "http://localhost:3000";
 
 export const config = {
   clientId: process.env.SPOTIFY_CLIENT_ID,
@@ -13,7 +14,8 @@ export const config = {
   tokenPath: `${spotifyApi}/api/token`,
   profilePath: "https://api.spotify.com/v1/me",
   /* redirect_uri is the callback url after successful signin */
-  redirect_uri: `${siteUrl}/.netlify/functions/auth-callback`
+  redirect_uri: `${siteUrl}/.netlify/functions/auth-callback`,
+  redirect_frontend: `${frontendUrl}/login`
 };
 
 function authInstance(credentials: ModuleOptions) {
