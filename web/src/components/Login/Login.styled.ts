@@ -22,7 +22,7 @@ export const Overlay = styled.section`
   left: 0;
 `;
 
-export const LoginButton = styled.button`
+export const LoginButton = styled.a`
   display: flex;
   align-items: center;
   justify-content: space-between;
