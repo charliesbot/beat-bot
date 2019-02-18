@@ -16,7 +16,7 @@ const fetchSpotifyAPI = ({ api, method = "GET", body }: FetchSpotify) => {
   const options: AxiosRequestConfig = {
     method,
     headers: {
-      Authorization: `Bearer BQDjciY5C0UJAk96AmGW-hqP8_Rm-Wt-1D3L5ARChl_gBqPqYhCUj4fglJPXz79gYLwzHQHWV-BMhVegr-tkoed7pvADRKlA0DIdfX8k0d3CZR2KskUeP04hvkoiGypmWBq7FMY1Hd7l1WcTrK0Sg_HIXzMPS_XYPao63K898kkLpoxLGsNwl0Y`,
+      Authorization: `Bearer BQBp3kyJ4uY5bAtz5kSE9vmSBnyCp7t11wgJ9PEy6_f0unc1xoQD55vrVqcZMi7AFrAtOI8dF_lQVw6WKca7JelBiKru3ZXh_oagkQLRi3eFVCvk9W8kXo6FLiJOAvHF6y5zxFGhWCAFfE_Y55KXb-cg9bJIaIHK7ioZo5sJjTqb_CvakszkCrU`,
       "Content-Type": "application/json"
     }
   };

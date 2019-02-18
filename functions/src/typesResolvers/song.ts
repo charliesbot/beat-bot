@@ -9,3 +9,9 @@ export const typeDefs = gql`
     artists: [Artist]
   }
 `;
+
+export const resolvers = {
+  Song: {
+    previewUrl: obj => obj.preview_url
+  }
+};
