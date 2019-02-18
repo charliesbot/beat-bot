@@ -29,7 +29,6 @@ const TopTracks = (props: any) => {
   };
 
   useLayoutEffect(() => {
-    props.requestTopTracks();
     props.requestGetUser();
     bscroll = new BScroll(wrapper.current, {
       freeScroll: true,
@@ -45,13 +44,14 @@ const TopTracks = (props: any) => {
   }, []);
 
   const toggleSong = (songId: string) => {
+    selectedSongs.has(songId);
     if (selectedSongs.has(songId)) {
       selectedSongs.delete(songId);
     } else if (selectedSongs.size < 5) {
       selectedSongs.add(songId);
     }
 
-    setSelectedSongs(selectedSongs);
+    setSelectedSongs(new Set(selectedSongs));
   };
 
   const currentSize = isMobile ? SIZES.SMALL : SIZES.BIG;
@@ -60,7 +60,7 @@ const TopTracks = (props: any) => {
     <Container>
       <SeedersMenu
         seedSongs={selectedSongs}
-        songs={songs}
+        songs={topTracks}
         onOpenModal={onOpenModal}
         onRemoveSong={toggleSong}
       />

@@ -6,6 +6,10 @@ import SpotifySDK from "../spotifySdk/SpotifySDK";
 function* triggerGetUser() {
   yield put(GET_USER.started());
   const user = yield call(SpotifySDK.getUser);
+  if (user.error) {
+    return yield put(GET_USER.failed());
+  }
+
   yield put(GET_USER.completed({ user }));
 }
 

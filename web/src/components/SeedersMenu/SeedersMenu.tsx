@@ -31,7 +31,10 @@ const SeedersMenu = (props: Props) => {
   const { songs, seedSongs, onRemoveSong, onOpenModal } = props;
   const [isOpen, setIsOpen] = useState(true);
 
-  const fullSelectedSongs = Array.from(seedSongs).map(id => songs[id]);
+  const fullSelectedSongs = Array.from(seedSongs).map(song =>
+    songs.find((s: any) => s.id === song)
+  );
+
   const removeSong = (id: string) => () => onRemoveSong(id);
 
   const toggleIsOpen = () => setIsOpen(!isOpen);
@@ -48,7 +51,7 @@ const SeedersMenu = (props: Props) => {
         <>
           <Body>
             {isEmpty && <EmptyQueue />}
-            {fullSelectedSongs.map(song => {
+            {fullSelectedSongs.map((song: any) => {
               return (
                 <SongRow
                   height={96}

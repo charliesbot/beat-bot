@@ -1,30 +1,34 @@
+import React from "react";
+import { useQuery } from "react-apollo-hooks";
 import { bindActionCreators, Dispatch } from "redux";
 import { connect } from "react-redux";
 import { show } from "redux-modal";
-import { GET_TOP_TRACKS } from "../../actions/topTracksActions";
 import { GET_RECOMMENDATION_SEED } from "../../actions/recommendationSeedActions";
+import { GET_TOP_TRACKS } from "./TopTracks.query";
 import { GET_USER } from "../../actions/auth";
 import TopTracks from "./TopTracks";
-
-const mapStateToProps = (state: any) => {
-  const { songs, topTracks } = state;
-  return {
-    topTracks: topTracks.map((trackId: string) => songs[trackId]),
-    songs
-  };
-};
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   const dispatchActions = {
     requestGetUser: GET_USER.request,
-    requestTopTracks: GET_TOP_TRACKS.request,
+
     requestGetRecommendations: GET_RECOMMENDATION_SEED.request,
     openModal: show
   };
   return bindActionCreators(dispatchActions, dispatch);
 };
 
+const TopTracksCompound: React.SFC<any> = props => {
+  const { data, loading } = useQuery(GET_TOP_TRACKS);
+
+  if (loading) {
+    return null;
+  }
+
+  return <TopTracks {...props} topTracks={data.topTracks} />;
+};
+
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
-)(TopTracks);
+)(TopTracksCompound);
