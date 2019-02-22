@@ -27,7 +27,7 @@ const renderStep = ({ step, ...props }: any) => {
     case 2: {
       return <PlaylistNameForm {...props} />;
     }
-    case 3: {
+    default: {
       return <ShareNewPlaylistModal {...props} />;
     }
   }

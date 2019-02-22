@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ReactClipboard from "react-clipboardjs-copy";
 import {
   Input,
@@ -11,11 +11,7 @@ import {
 import Loader from "../Loader";
 
 const CuratedPlaylistModal = (props: any) => {
-  const { createPlaylist, playlist, isLoading, handleHide } = props;
-
-  useEffect(() => {
-    createPlaylist();
-  }, []);
+  const { playlist, isLoading, handleHide } = props;
 
   if (isLoading || !playlist) {
     return (
@@ -25,12 +21,12 @@ const CuratedPlaylistModal = (props: any) => {
     );
   }
 
-  const link = playlist.external_urls.spotify;
+  const link = playlist.externalUrls.spotify;
 
   return (
     <>
       <Container>
-        <h1>Your new playlist is ready!</h1>
+        <h1>{`Your playlist ${playlist.name} is ready!`}</h1>
         <CopyRow>
           <Input value={link} readOnly />
           <ReactClipboard

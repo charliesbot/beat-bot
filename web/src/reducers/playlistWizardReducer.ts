@@ -1,7 +1,5 @@
-import property from "lodash/fp/property";
 import { hide } from "redux-modal";
 import { NEXT_STEP, SET_PLAYLIST_DATA } from "../actions/playlistWizardActions";
-import { GET_RECOMMENDATION_SEED } from "../actions/recommendationSeedActions";
 import { CREATE_PLAYLIST } from "../actions/createPlaylistAction";
 
 const initialState = {
@@ -17,22 +15,6 @@ const user = (state = initialState, action: any) => {
   switch (action.type) {
     case hide("createPlaylistWizard").type: {
       return initialState;
-    }
-
-    case GET_RECOMMENDATION_SEED.started.TYPE: {
-      return {
-        ...state,
-        songs: [],
-        isLoading: true
-      };
-    }
-
-    case GET_RECOMMENDATION_SEED.completed.TYPE: {
-      return {
-        ...state,
-        songs: action.payload.songs.tracks.map(property("id")),
-        isLoading: false
-      };
     }
 
     case NEXT_STEP.TYPE: {

@@ -1,27 +1,40 @@
+import React from "react";
+import { useQuery } from "react-apollo-hooks";
 import { bindActionCreators, Dispatch } from "redux";
 import { connect } from "react-redux";
-import { GET_RECOMMENDATION_SEED } from "../../actions/recommendationSeedActions";
 import { CREATE_PLAYLIST } from "../../actions/createPlaylistAction";
 import CuratedPlaylistModal from "./CuratedPlaylistModal";
-
-const mapStateToProps = (state: any) => {
-  const { songs, playlistWizard } = state;
-  return {
-    curatedSongs: playlistWizard.songs.map((songId: string) => songs[songId]),
-    isLoading: playlistWizard.isLoading
-  };
-};
+import { GET_RECOMMENDATIONS } from "./CuratedPlaylistModal.query";
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   const dispatchActions = {
-    requestGetRecommendations: GET_RECOMMENDATION_SEED.request,
-    createPlaylist: CREATE_PLAYLIST.request
+    saveSongs: CREATE_PLAYLIST.completed
   };
 
   return bindActionCreators(dispatchActions, dispatch);
 };
 
+const CuratedPlaylistModalCompound: React.FC<any> = props => {
+  const { message, saveSongs } = props;
+  const seedTracks = Array.from(message.seedSongs);
+  const { data, loading } = useQuery(GET_RECOMMENDATIONS, {
+    variables: {
+      seedTracks
+    }
+  });
+
+  return (
+    <CuratedPlaylistModal
+      {...props}
+      saveSongs={saveSongs}
+      topTracks={data.topTracks}
+      isLoading={loading}
+      curatedSongs={data.recommendations}
+    />
+  );
+};
+
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
-)(CuratedPlaylistModal);
+)(CuratedPlaylistModalCompound);

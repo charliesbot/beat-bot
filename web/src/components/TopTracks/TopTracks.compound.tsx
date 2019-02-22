@@ -3,7 +3,6 @@ import { useQuery } from "react-apollo-hooks";
 import { bindActionCreators, Dispatch } from "redux";
 import { connect } from "react-redux";
 import { show } from "redux-modal";
-import { GET_RECOMMENDATION_SEED } from "../../actions/recommendationSeedActions";
 import { GET_TOP_TRACKS } from "./TopTracks.query";
 import { GET_USER } from "../../actions/auth";
 import TopTracks from "./TopTracks";
@@ -11,14 +10,12 @@ import TopTracks from "./TopTracks";
 const mapDispatchToProps = (dispatch: Dispatch) => {
   const dispatchActions = {
     requestGetUser: GET_USER.request,
-
-    requestGetRecommendations: GET_RECOMMENDATION_SEED.request,
     openModal: show
   };
   return bindActionCreators(dispatchActions, dispatch);
 };
 
-const TopTracksCompound: React.SFC<any> = props => {
+const TopTracksCompound: React.FC<any> = props => {
   const { data, loading } = useQuery(GET_TOP_TRACKS);
 
   if (loading) {
