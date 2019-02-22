@@ -7,6 +7,7 @@ export const typeDefs = gql`
     previewUrl: String
     album: Album
     artists: [Artist]
+    uri: String
   }
 `;
 
