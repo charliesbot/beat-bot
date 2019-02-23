@@ -6,7 +6,6 @@
     "@types/lodash": "^4.14.119",
     "apollo-boost": "^0.1.28",
     "better-scroll": "^1.14.1",
-    "connected-react-router": "^6.1.0",
     "graphql": "^14.1.1",
     "lodash": "^4.17.11",
     "polished": "^2.3.3",
