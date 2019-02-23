@@ -7,12 +7,7 @@ import {
   SpotifyIcon
 } from "./Login.styled";
 
-type Props = {
-  requestLogin: (_: any) => void;
-};
-
-const Login = (props: Props) => {
-  const { requestLogin } = props;
+const Login: React.FC<any> = props => {
   useEffect(() => {
     const token = window.location.hash
       .substr(1)
@@ -20,7 +15,8 @@ const Login = (props: Props) => {
       .split("=")[1];
 
     if (token) {
-      requestLogin({ token });
+      sessionStorage.setItem("token", token);
+      props.history.push("/");
     }
   });
 

@@ -1,29 +1,37 @@
 import React, { useState, useEffect } from "react";
-import { useMutation } from "react-apollo-hooks";
+import { useQuery, useMutation } from "react-apollo-hooks";
 import { connect } from "react-redux";
 import ShareNewPlaylistModal from "./ShareNewPlaylistModal";
-import { CREATE_PLAYLIST } from "./ShareNewPlaylistModal.query";
+import { GET_USER, CREATE_PLAYLIST } from "./ShareNewPlaylistModal.query";
 
 const mapStateToProps = (state: any) => {
-  const { playlistWizard, user } = state;
+  const { playlistWizard } = state;
   const { playlist, title } = playlistWizard;
   return {
-    userId: user.id,
     playlistName: title,
     uris: playlist.map((track: any) => track.uri)
   };
 };
 
 const ShareNewPlaylistModalCompound: React.FC<any> = props => {
-  const { userId, playlistName, uris, handleHide } = props;
-  const [loading, setLoading] = useState(true);
+  const { playlistName, uris, handleHide } = props;
+  const [isLoading, setLoading] = useState(true);
   const [playlist, setPlaylist] = useState(null);
-  const createPlaylist = useMutation(CREATE_PLAYLIST, {
-    variables: { userId, playlistName, uris }
-  });
+  const { data, loading: getUserLoading } = useQuery(GET_USER);
+  const createPlaylist = useMutation(CREATE_PLAYLIST);
 
   useEffect(() => {
-    createPlaylist()
+    const mutationVariables = {
+      variables: { userId: "", playlistName, uris }
+    };
+
+    if (!data.user) {
+      return;
+    }
+
+    mutationVariables.variables.userId = data.user.id;
+
+    createPlaylist(mutationVariables)
       .then(({ data }) => {
         setPlaylist(data.createPlaylistWithSongs.playlist);
       })
@@ -31,11 +39,11 @@ const ShareNewPlaylistModalCompound: React.FC<any> = props => {
         console.error(error);
       })
       .finally(() => setLoading(false));
-  }, []);
+  }, [getUserLoading]);
 
   return (
     <ShareNewPlaylistModal
-      isLoading={loading}
+      isLoading={isLoading}
       playlist={playlist}
       handleHide={handleHide}
     />

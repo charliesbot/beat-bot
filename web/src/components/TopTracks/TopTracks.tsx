@@ -16,7 +16,7 @@ const TopTracks = (props: any) => {
   const origin = useOrigin();
   const [selectedSongs, setSelectedSongs] = useState(new Set());
   const [scrollPosition, setScrollPosition] = useState({});
-  const { topTracks, songs, openModal } = props;
+  const { topTracks, openModal } = props;
 
   const onScroll = throttle(50, (position: Position) => {
     setScrollPosition(position);
@@ -29,7 +29,6 @@ const TopTracks = (props: any) => {
   };
 
   useLayoutEffect(() => {
-    props.requestGetUser();
     bscroll = new BScroll(wrapper.current, {
       freeScroll: true,
       mouseWheel: true,

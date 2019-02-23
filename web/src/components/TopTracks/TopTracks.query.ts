@@ -1,7 +1,11 @@
 import { gql } from "apollo-boost";
 
-export const GET_TOP_TRACKS = gql`
-  query GetTopTracks {
+export const GET_TOP_TRACKS_AND_USER = gql`
+  query GetTopTracksAndUser {
+    user {
+      id
+      name
+    }
     topTracks {
       id
       name

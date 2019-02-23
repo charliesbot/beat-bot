@@ -4,6 +4,7 @@ import {
   typeDefs as Mutation,
   resolvers as mutationResolvers
 } from "./mutation";
+import { typeDefs as User, resolvers as userResolvers } from "./user";
 import { typeDefs as Song, resolvers as songResolvers } from "./song";
 import { typeDefs as Artist } from "./artist";
 import { typeDefs as Album } from "./album";
@@ -17,6 +18,7 @@ import {
 export const typeDefs = [
   Query,
   Mutation,
+  User,
   Song,
   Album,
   Artist,
@@ -29,5 +31,6 @@ export const resolvers = merge(
   queryResolvers,
   mutationResolvers,
   songResolvers,
-  playlistResolvers
+  playlistResolvers,
+  userResolvers
 );

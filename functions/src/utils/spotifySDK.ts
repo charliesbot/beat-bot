@@ -9,7 +9,8 @@ export const SpotifySDK = (token: string) => {
   const client = SpotifyClient(token);
   return {
     getUser: async () => {
-      return await client.get("me");
+      const user = await client.get("me");
+      return user.data;
     },
     getPlaylist: async playlistId => {
       const playlist = await client.get(`playlists/${playlistId}`);
