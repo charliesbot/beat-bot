@@ -1,20 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { ConnectedRouter } from "connected-react-router";
+import { BrowserRouter as Router } from "react-router-dom";
+import { ApolloProvider } from "react-apollo-hooks";
 import { ThemeProvider } from "styled-components";
 import { Provider } from "react-redux";
 import GlobalStyle from "./globalStyle";
-import store, { history } from "./store";
+import store from "./store";
 import App from "./components/App";
 import theme from "./theme";
+import { client } from "./client";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <App />
-      </ConnectedRouter>
+      <Router>
+        <ApolloProvider client={client}>
+          <App />
+        </ApolloProvider>
+      </Router>
       <GlobalStyle />
     </Provider>
   </ThemeProvider>,

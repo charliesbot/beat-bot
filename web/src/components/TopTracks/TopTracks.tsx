@@ -16,7 +16,7 @@ const TopTracks = (props: any) => {
   const origin = useOrigin();
   const [selectedSongs, setSelectedSongs] = useState(new Set());
   const [scrollPosition, setScrollPosition] = useState({});
-  const { topTracks, songs, openModal } = props;
+  const { topTracks, openModal } = props;
 
   const onScroll = throttle(50, (position: Position) => {
     setScrollPosition(position);
@@ -29,8 +29,6 @@ const TopTracks = (props: any) => {
   };
 
   useLayoutEffect(() => {
-    props.requestTopTracks();
-    props.requestGetUser();
     bscroll = new BScroll(wrapper.current, {
       freeScroll: true,
       mouseWheel: true,
@@ -45,13 +43,14 @@ const TopTracks = (props: any) => {
   }, []);
 
   const toggleSong = (songId: string) => {
+    selectedSongs.has(songId);
     if (selectedSongs.has(songId)) {
       selectedSongs.delete(songId);
     } else if (selectedSongs.size < 5) {
       selectedSongs.add(songId);
     }
 
-    setSelectedSongs(selectedSongs);
+    setSelectedSongs(new Set(selectedSongs));
   };
 
   const currentSize = isMobile ? SIZES.SMALL : SIZES.BIG;
@@ -60,7 +59,7 @@ const TopTracks = (props: any) => {
     <Container>
       <SeedersMenu
         seedSongs={selectedSongs}
-        songs={songs}
+        songs={topTracks}
         onOpenModal={onOpenModal}
         onRemoveSong={toggleSong}
       />

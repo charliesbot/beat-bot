@@ -5,11 +5,13 @@ import WizardFooter from "../CreatePlaylistWizard.Footer";
 import Loader from "../Loader";
 
 const CuratedPlaylistModal = (props: any) => {
-  const { message, requestGetRecommendations, curatedSongs, isLoading } = props;
-
-  useEffect(() => {
-    requestGetRecommendations({ seedTracks: Array.from(message.seedSongs) });
-  }, []);
+  const { curatedSongs = [], isLoading, saveSongs } = props;
+  useEffect(
+    () => {
+      saveSongs({ playlist: curatedSongs });
+    },
+    [curatedSongs]
+  );
 
   return (
     <Container>

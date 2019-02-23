@@ -7,11 +7,11 @@ const SongRow = ({ song, right, height }: any) => {
     <Row key={song.id} height={height}>
       <AlbumArt
         src={song.album.images[2].url}
-        onClick={() => MediaTracker.playSong(song.preview_url)}
+        onClick={() => MediaTracker.playSong(song.previewUrl)}
       />
       <Details>
         <strong>{song.name}</strong>
-        <span>{song.artist}</span>
+        <span>{song.artists[0].name}</span>
       </Details>
       {right}
     </Row>
