@@ -13,14 +13,14 @@ import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
-    <ApolloProvider client={client}>
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <ApolloProvider client={client}>
           <App />
-        </ConnectedRouter>
-        <GlobalStyle />
-      </Provider>
-    </ApolloProvider>
+        </ApolloProvider>
+      </ConnectedRouter>
+      <GlobalStyle />
+    </Provider>
   </ThemeProvider>,
   document.getElementById("root")
 );
