@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { Container, Label, Info, Toggle } from "./Song.styled";
 import { offset, distanceBetweenPoints, getPosition } from "../../utils/layout";
 import { Point } from "../../@types/Point.type";
+import { useIntersectionObserver } from "../../hooks";
 
 type Props = {
   song: any;
@@ -16,13 +17,15 @@ type Props = {
 const MAX_SCALE = 2;
 
 const Song = (props: Props) => {
-  const ref = useRef(null);
-
   const { song, origin, onToggleSong, size, added, index } = props;
-  const onClick = () => onToggleSong(song.id);
   const { album } = song;
 
+  const ref: any = useRef(null);
+  const onClick = () => onToggleSong(song.id);
+
   const coverPoints = offset(ref.current);
+
+  // const isVisible = useIntersectionObserver(ref);
   const calculatedDistance = distanceBetweenPoints(origin, coverPoints);
 
   const delta = MAX_SCALE - calculatedDistance / (size * 1.65);
@@ -35,7 +38,7 @@ const Song = (props: Props) => {
 
   const { positionX, positionY } = getPosition(index, size);
 
-  const style = {
+  const style: any = {
     transform: `translate3d(${positionX}px, ${positionY}px, ${zIndex}px) scale3d(${limitedDelta}, ${limitedDelta}, ${limitedDelta})`,
     width: size,
     height: size,

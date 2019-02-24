@@ -13,8 +13,6 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
   position: relative;
-  width: 1200px;
-  height: 2000px;
   color: white;
   transform-style: preserve-3d;
   cursor: grab;

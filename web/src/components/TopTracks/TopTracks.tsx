@@ -18,7 +18,7 @@ const TopTracks = (props: any) => {
   const [scrollPosition, setScrollPosition] = useState({});
   const { topTracks, openModal } = props;
 
-  const onScroll = throttle(50, (position: Position) => {
+  const onScroll = throttle(100, (position: Position) => {
     setScrollPosition(position);
   });
 
@@ -55,6 +55,11 @@ const TopTracks = (props: any) => {
 
   const currentSize = isMobile ? SIZES.SMALL : SIZES.BIG;
 
+  const containerStyle = {
+    width: currentSize * 6,
+    height: Math.ceil(topTracks.length / 6) * currentSize
+  };
+
   return (
     <Container>
       <SeedersMenu
@@ -64,7 +69,7 @@ const TopTracks = (props: any) => {
         onRemoveSong={toggleSong}
       />
       <Wrapper ref={wrapper} className="wrapper">
-        <Content className="content">
+        <Content className="content" style={containerStyle}>
           {topTracks.map((song: SongType, index: number) => {
             return (
               <Song

@@ -34,7 +34,7 @@ export const useOrigin = () => {
 };
 
 export const useIntersectionObserver = (ref: React.RefObject<HTMLElement>) => {
-  const [isIntersection, setIntersection] = useState(false);
+  const [isIntersection, setIntersection] = useState(true);
   useLayoutEffect(() => {
     if (ref.current) {
       const observer = new IntersectionObserver(([entry]) => {
@@ -43,7 +43,7 @@ export const useIntersectionObserver = (ref: React.RefObject<HTMLElement>) => {
 
       observer.observe(ref.current);
     }
-  }, []);
+  }, [ref]);
 
   return isIntersection;
 };
