@@ -27,7 +27,7 @@ export const SpotifySDK = (token: string) => {
       const songs = await client.get(`recommendations?${seedTracksQuery}`);
       return songs.data.tracks;
     },
-    createPlaylist: async (userId: string, playlistName: string) => {
+    createPlaylist: async (userId: string, playlistName = 'Playlist made by Mozika') => {
       const body = {
         name: playlistName,
         description: "🎧",
