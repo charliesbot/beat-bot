@@ -31,6 +31,7 @@ export const LoginButton = styled.a`
   cursor: pointer;
   color: white;
   background-color: ${props => props.theme.primary};
+  text-decoration: none;
   border-radius: 500px;
   transition: all ease 200ms;
   border: none;
