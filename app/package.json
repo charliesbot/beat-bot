@@ -1,0 +1,39 @@
+{
+  "name": "beat-bot",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "type-check": "tsc"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.14",
+    "@emotion/styled": "^10.0.14",
+    "next": "8.1.1-canary.61",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-icons": "^3.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^11.13.9",
+    "@types/react": "^16.8.15",
+    "@types/react-dom": "^16.0.11",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "babel-plugin-emotion": "^10.0.14",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-formatter-pretty": "^2.1.1",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jest": "^22.3.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-hooks": "^1.6.0",
+    "eslint-plugin-unicorn": "^7.1.0",
+    "prettier": "^1.18.2",
+    "typescript": "3.5.2"
+  },
+  "license": "ISC"
+}
