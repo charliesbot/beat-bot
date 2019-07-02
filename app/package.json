@@ -2,6 +2,7 @@
   "name": "beat-bot",
   "version": "1.0.0",
   "scripts": {
+    "now-build": "next build",
     "dev": "next",
     "build": "next build",
     "start": "next start",

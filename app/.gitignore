@@ -33,6 +33,7 @@ build/Release
 
 # Dependency directories
 node_modules/
+api/node_modules/
 
 # Typescript v1 declaration files
 typings/
@@ -53,4 +54,5 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
+.env
 

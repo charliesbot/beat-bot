@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "name": "beat-bot",
+  "build": {
+    "env": {
+      "API_URL": "http://localhost:3000"
+    }
+  },
+  "builds": [
+    { "src": "app/package.json", "use": "@now/next" },
+    { "src": "api/*.ts", "use": "@now/node" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/(.*)", "dest": "/app/$1" }
+  ]
+}
