@@ -11,7 +11,14 @@
     { "src": "api/*.ts", "use": "@now/node" }
   ],
   "routes": [
+    { "src": "/graphql", "dest": "api/graphql.ts" },
     { "src": "/api/(.*)", "dest": "/api/$1" },
-    { "src": "/(.*)", "dest": "/app/$1" }
+    {
+      "src": "/(.*)",
+      "dest": "/app/$1",
+      "headers": {
+        "x-request-path": "$1"
+      }
+    }
   ]
 }

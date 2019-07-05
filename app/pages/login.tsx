@@ -64,11 +64,11 @@ const LoginPage: NextPage = () => {
     <Layout title="Beat bot 🤖">
       <Container>
         <Header>
-          Mix your favorite songs. <br />
-          Find your next playlist. <br />
-          Fall in love. Again.
+          Welcome to Beat Bot! <br />
+          Discover new music based on the songs you love. <br />
+          Create the new playlist that will rock your day.
         </Header>
-        <LoginButton href="">
+        <LoginButton href="http://localhost:3000/api/auth.ts">
           <SpotifyIcon size="6rem" />
           Login with Spotify
         </LoginButton>
