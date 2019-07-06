@@ -1,13 +1,13 @@
 import React from "react";
 import Router from "next/router";
-import { NextPage, NextPageContext } from "next";
+import { NextPage } from "next";
 import { setCookie } from "nookies";
 
 const Callback: NextPage = () => {
   return <div />;
 };
 
-Callback.getInitialProps = async (ctx: NextPageContext) => {
+Callback.getInitialProps = async ctx => {
   const { access_token } = ctx.query;
   if (Array.isArray(access_token)) {
     return {};

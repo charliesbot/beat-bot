@@ -7,7 +7,7 @@ function SpotifyClient(token: string) {
     baseURL: apiBase,
     timeout: 1000,
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: token,
       "Content-Type": "application/json",
     },
   });
