@@ -2,7 +2,12 @@ import React, { useRef } from "react";
 import styled from "@emotion/styled";
 import { offset, distanceBetweenPoints, getPosition } from "../utils/layout";
 
-const Container = styled.div`
+export const SIZES = {
+  SMALL: 150,
+  BIG: 200,
+};
+
+const Container = styled.div<any>`
   display: flex;
   top: 0;
   left: 0;

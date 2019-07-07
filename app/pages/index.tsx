@@ -5,7 +5,7 @@ import Home from "../components/Home";
 
 const IndexPage: NextPage = () => {
   return (
-    <Layout>
+    <Layout title="Beat Bot">
       <Home />
     </Layout>
   );
