@@ -27,7 +27,7 @@ const EmptyQueue = () => {
 
 const SeedersMenu: React.FC<Props> = props => {
   const { songs, seedSongs } = props;
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const fullSelectedSongs = Array.from(seedSongs).map(song =>
     songs.find((s: any) => s.id === song),

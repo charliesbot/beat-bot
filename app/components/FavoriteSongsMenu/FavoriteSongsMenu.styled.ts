@@ -54,7 +54,7 @@ export const RecommendationsButton = styled(BaseButton)`
   --recommendation-color: #0e0e6f;
   width: 100%;
   height: 3.25rem;
-  background-color: ${props => props.theme.primary};
+  background-color: red;
   font-weight: bold;
   color: white;
   transition: ease all 200ms;

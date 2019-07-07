@@ -10,12 +10,12 @@ export const offset = (el: HTMLElement | null) => {
   if (!el) {
     return;
   }
+
   const rect = el.getBoundingClientRect();
-  const scrollLeft = window.pageXOffset;
-  const scrollTop = window.pageYOffset;
+
   return {
-    x: rect.left + scrollLeft + rect.width / 2,
-    y: rect.top + scrollTop + rect.height / 2,
+    x: rect.left + rect.width / 2,
+    y: rect.top + rect.height / 2,
   };
 };
 
