@@ -68,7 +68,7 @@ const LoginPage: NextPage = () => {
           Discover new music based on the songs you love. <br />
           Create the new playlist that will rock your day.
         </Header>
-        <LoginButton href="http://localhost:3000/api/auth.ts">
+        <LoginButton href="/api/auth.ts">
           <SpotifyIcon size="6rem" />
           Login with Spotify
         </LoginButton>

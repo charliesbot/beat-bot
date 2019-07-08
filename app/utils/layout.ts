@@ -6,19 +6,6 @@ export const getCenter = (node: HTMLElement) => {
   return { x, y };
 };
 
-export const offset = (el: HTMLElement | null) => {
-  if (!el) {
-    return;
-  }
-
-  const rect = el.getBoundingClientRect();
-
-  return {
-    x: rect.left + rect.width / 2,
-    y: rect.top + rect.height / 2,
-  };
-};
-
 export const distanceBetweenPoints = (point1?: Point, point2?: Point) => {
   if (!point1 || !point2) {
     return 0;
