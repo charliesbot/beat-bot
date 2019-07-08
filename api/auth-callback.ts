@@ -6,8 +6,6 @@ export default async (req: NowRequest, res: NowResponse) => {
   /* state helps mitigate CSRF attacks & Restore the previous state of your app */
   const { code } = req.query;
   const baseUrl = getBaseUrl(req);
-  // redirect_uri: `${baseUrl}/api/auth-callback.ts`,
-  // redirect_frontend: `${baseUrl}/callback`,
 
   /* Take the grant code and exchange for an accessToken */
   const maybeToken = await oauth2.authorizationCode.getToken({
