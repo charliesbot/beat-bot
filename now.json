@@ -3,7 +3,8 @@
   "name": "beat-bot",
   "build": {
     "env": {
-      "API_URL": "http://localhost:3000"
+      "SPOTIFY_CLIENT_ID": "@spotify-client-id",
+      "SPOTIFY_CLIENT_SECRET": "@spotify-api-key"
     }
   },
   "builds": [
