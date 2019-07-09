@@ -2,12 +2,12 @@ import { gql } from "apollo-server-micro";
 
 export const typeDefs = gql`
   type Song {
-    id: ID
-    name: String
+    id: ID!
+    name: String!
     previewUrl: String
-    album: Album
-    artists: [Artist]
-    uri: String
+    album: Album!
+    artists: [Artist!]!
+    uri: String!
   }
 `;
 

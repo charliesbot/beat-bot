@@ -18,7 +18,7 @@ export const SpotifySDK = (token: string) => {
     },
     getTopTracks: async (entity: Entity) => {
       const songs = await client.get(
-        `me/top/${entity}?limit=50&time_range=medium_term`,
+        `me/top/${entity}?limit=48&time_range=medium_term`,
       );
       return songs.data.items;
     },

@@ -21,7 +21,7 @@ export interface Query {
 
   playlist?: Maybe<Playlist>;
 
-  topTracks?: Maybe<(Maybe<Song>)[]>;
+  topTracks: Song[];
 
   recommendations?: Maybe<(Maybe<Song>)[]>;
 }

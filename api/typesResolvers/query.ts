@@ -4,7 +4,7 @@ export const typeDefs = gql`
   type Query {
     user: User
     playlist(playlistId: ID!): Playlist
-    topTracks: [Song]
+    topTracks: [Song!]!
     recommendations(seedTracks: [ID]): [Song]
   }
 `;
