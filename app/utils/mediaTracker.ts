@@ -1,13 +1,34 @@
-function MediaTracker() {
-  const media = new Audio();
-  return {
-    playSong: (url: string) => {
-      media.volume = 0.4;
-      media.pause();
-      media.src = url;
-      media.play();
-    },
-  };
-}
+let media: HTMLAudioElement | null = null;
 
-export default MediaTracker;
+const getMedia = () => {
+  if (media) {
+    return media;
+  }
+
+  if (process.browser && !media) {
+    media = new Audio();
+    media.volume = 0.4;
+    return media;
+  }
+
+  return null;
+};
+
+const mediaTracker = {
+  playSong: (url: string) => {
+    const media = getMedia();
+    if (!media) {
+      return;
+    }
+
+    if (media.src === url && !media.paused) {
+      media.pause();
+      return;
+    }
+
+    media.src = url;
+    media.play();
+  },
+};
+
+export default mediaTracker;

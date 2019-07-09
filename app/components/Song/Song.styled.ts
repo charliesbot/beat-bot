@@ -26,12 +26,29 @@ export const Container = styled.div<ContainerProps>`
     `translate3d(${positionX}px, ${positionY}px, 1px) scale3d(1, 1, 1)`};
 `;
 
+export const PlayButton = styled.button`
+  box-shadow: none;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+  svg {
+    pointer-events: none;
+  }
+`;
+
 export const Info = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
   flex: 1;
   max-width: 70%;
+  .songTitle,
+  .songArtist {
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `;
 
 export const Label = styled.div`
@@ -51,4 +68,3 @@ export const Label = styled.div`
     font-size: 0.5rem;
   }
 `;
-

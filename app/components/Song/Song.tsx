@@ -1,6 +1,7 @@
 import React from "react";
-import { Container, Label, Info } from "./Song.styled";
-import MediaTracker from "../../utils/mediaTracker";
+import { MdPlayCircleOutline } from "react-icons/md";
+import { Container, Label, Info, PlayButton } from "./Song.styled";
+import mediaTracker from "../../utils/mediaTracker";
 import { Song as SongType } from "../../interfaces/types";
 
 export const SIZES = {
@@ -31,9 +32,13 @@ const Song: React.FC<Props> = props => {
     >
       <Label>
         {previewUrl && (
-          <button onClick={() => MediaTracker().playSong(previewUrl)}>
-            play
-          </button>
+          <PlayButton onClick={() => mediaTracker.playSong(previewUrl)}>
+            <MdPlayCircleOutline
+              color="white"
+              size="1.5rem"
+              onClick={() => mediaTracker.playSong(previewUrl)}
+            />
+          </PlayButton>
         )}
         <Info>
           <strong className="songTitle">{song.name}</strong>
