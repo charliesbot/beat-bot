@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "name": "beat-bot",
+  "build": {
+    "env": {
+      "SPOTIFY_CLIENT_ID": "@spotify-client-id",
+      "SPOTIFY_CLIENT_SECRET": "@spotify-api-key"
+    }
+  },
+  "builds": [
+    { "src": "app/package.json", "use": "@now/next" },
+    { "src": "api/*.ts", "use": "@now/node" }
+  ],
+  "routes": [
+    { "src": "/graphql", "dest": "api/graphql.ts" },
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    {
+      "src": "/(.*)",
+      "dest": "/app/$1",
+      "headers": {
+        "x-request-path": "$1"
+      }
+    }
+  ]
+}
