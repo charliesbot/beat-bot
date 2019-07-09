@@ -12,19 +12,29 @@ const LoginButton = styled.a`
   padding: 0.5rem 2rem;
   cursor: pointer;
   color: white;
-  background-color: red;
+  background-color: #1db954;
   text-decoration: none;
   border-radius: 500px;
   transition: all ease 200ms;
   border: none;
   &:hover {
     transform: scale(1.1);
-    background-color: #1ed760;
+    background-color: #169443;
   }
 `;
 
-const Header = styled.h1`
-  line-height: 1.4;
+const Header = styled.section`
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  .welcome {
+    margin: 0;
+    font-size: 3rem;
+  }
+
+  .discover,
+  .create {
+    font-size: 1.5rem;
+  }
 `;
 
 const SpotifyIcon = styled(FaSpotify)`
@@ -64,9 +74,14 @@ const LoginPage: NextPage = () => {
     <Layout title="Beat bot 🤖">
       <Container>
         <Header>
-          Welcome to Beat Bot! <br />
-          Discover new music based on the songs you love. <br />
-          Create the new playlist that will rock your day.
+          <h1 className="welcome">Welcome to Beat Bot!</h1>
+          <span className="discover">
+            Discover new music based on the songs you love.
+          </span>
+          <br />
+          <span className="create">
+            Create the playlist that will rock your day.
+          </span>
         </Header>
         <LoginButton href="/api/auth.ts">
           <SpotifyIcon size="6rem" />
