@@ -7,16 +7,21 @@ import Song, { SIZES } from "../Song";
 import FavoriteSongsMenu from "../FavoriteSongsMenu";
 import { Wrapper, Content } from "./TopTracks.styled";
 import { distanceBetweenPoints, getPosition } from "../../utils/layout";
+import { Song as SongType } from "../../interfaces/types";
 
 let bscroll: BScroll;
 BScroll.use(MouseWheel);
 
-const TopTracks: React.FC<any> = ({ topTracks }) => {
+type Props = {
+  topTracks: SongType[];
+};
+
+const TopTracks: React.FC<Props> = ({ topTracks }) => {
   const wrapper = useRef<HTMLDivElement>(null);
   const origin = useOrigin();
   const isMobile = useMobileDetector();
   const currentSize = isMobile ? SIZES.SMALL : SIZES.BIG;
-  const positions = topTracks.map((_: any, index: number) =>
+  const positions = topTracks.map((_, index) =>
     getPosition(index, currentSize),
   );
 
@@ -70,14 +75,13 @@ const TopTracks: React.FC<any> = ({ topTracks }) => {
   };
 
   return (
-    <div>
+    <>
       <FavoriteSongsMenu seedSongs={new Set()} songs={topTracks} />
       <Wrapper ref={wrapper} className="wrapper">
         <Content className="content" style={containerStyle}>
-          {topTracks.map((song: any, index: number) => {
+          {topTracks.map((song, index) => {
             return (
               <Song
-                index={index}
                 size={currentSize}
                 song={song}
                 key={song.id}
@@ -88,7 +92,7 @@ const TopTracks: React.FC<any> = ({ topTracks }) => {
           })}
         </Content>
       </Wrapper>
-    </div>
+    </>
   );
 };
 

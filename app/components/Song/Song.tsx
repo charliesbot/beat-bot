@@ -1,14 +1,23 @@
 import React from "react";
 import { Container, Label, Info } from "./Song.styled";
+import MediaTracker from "../../utils/mediaTracker";
+import { Song as SongType } from "../../interfaces/types";
 
 export const SIZES = {
   SMALL: 150,
   BIG: 200,
 };
 
-const Song: React.FC<any> = props => {
+type Props = {
+  song: SongType;
+  size: number;
+  positionX: number;
+  positionY: number;
+};
+
+const Song: React.FC<Props> = props => {
   const { song, size, positionX, positionY } = props;
-  const { album } = song;
+  const { album, previewUrl } = song;
   const coverArt = album.images[1].url;
 
   return (
@@ -21,6 +30,11 @@ const Song: React.FC<any> = props => {
       className="song"
     >
       <Label>
+        {previewUrl && (
+          <button onClick={() => MediaTracker().playSong(previewUrl)}>
+            play
+          </button>
+        )}
         <Info>
           <strong className="songTitle">{song.name}</strong>
           <span className="songArtist">{song.artists[0].name}</span>
