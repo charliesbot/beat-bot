@@ -12,24 +12,15 @@ export const SIZES = {
 type Props = {
   song: SongType;
   size: number;
-  positionX: number;
-  positionY: number;
 };
 
 const Song: React.FC<Props> = props => {
-  const { song, size, positionX, positionY } = props;
+  const { song, size } = props;
   const { album, previewUrl } = song;
   const coverArt = album.images[1].url;
 
   return (
-    <Container
-      positionY={positionY}
-      positionX={positionX}
-      coverArt={coverArt}
-      height={size}
-      width={size}
-      className="song"
-    >
+    <Container coverArt={coverArt} height={size} width={size} className="song">
       <Label>
         {previewUrl && (
           <PlayButton onClick={() => mediaTracker.playSong(previewUrl)}>

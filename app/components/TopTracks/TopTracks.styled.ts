@@ -18,6 +18,9 @@ export const Wrapper = styled.main`
 `;
 
 export const Content = styled.aside`
+  display: grid;
+  grid-template-columns: repeat(7, 200px);
+  grid-template-rows: repeat(7, 200px);
   position: relative;
   color: white;
   transform-style: preserve-3d;

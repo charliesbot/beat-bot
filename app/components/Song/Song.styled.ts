@@ -4,8 +4,6 @@ type ContainerProps = {
   width: number;
   height: number;
   coverArt: string;
-  positionX: number;
-  positionY: number;
 };
 
 export const Container = styled.div<ContainerProps>`
@@ -14,7 +12,7 @@ export const Container = styled.div<ContainerProps>`
   left: 0;
   width: ${({ width }) => width}px;
   height: ${({ height }) => height}px;
-  position: absolute;
+  position: relative;
   background-size: cover;
   border-radius: 0.25rem;
   overflow: hidden;
@@ -22,8 +20,6 @@ export const Container = styled.div<ContainerProps>`
   border: none;
   box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.3);
   background-image: url('${({ coverArt }) => coverArt}');
-  transform: ${({ positionX, positionY }) =>
-    `translate3d(${positionX}px, ${positionY}px, 1px) scale3d(1, 1, 1)`};
 `;
 
 export const PlayButton = styled.button`
