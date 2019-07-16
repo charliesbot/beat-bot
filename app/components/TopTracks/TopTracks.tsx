@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import BScroll from "@better-scroll/core";
 import { useOrigin } from "../../hooks/useOrigin";
 import { useMobileDetector } from "../../hooks/useMobileDetector";
@@ -17,13 +17,9 @@ type Props = {
 const TopTracks: React.FC<Props> = ({ topTracks }) => {
   const wrapper = useRef<HTMLDivElement>(null);
   const origin = useOrigin();
+  const [selectedSongs, setSelectedSongs] = useState<Set<string>>(new Set());
   const isMobile = useMobileDetector();
   const currentSize = isMobile ? SIZES.SMALL : SIZES.BIG;
-  const click = () => {
-    const elements = Array.from(document.querySelectorAll(".song"));
-    const element = elements[20] as HTMLElement;
-    bscroll.scroller.scrolltoelement(element, 10, 10, 10);
-  };
 
   useEffect(() => {
     if (wrapper.current) {
@@ -42,8 +38,8 @@ const TopTracks: React.FC<Props> = ({ topTracks }) => {
       bscroll.scroller.scrollToElement(
         songs[Math.floor(songs.length / 2)],
         1000,
-        0,
-        0,
+        100,
+        100,
       );
 
       bscroll.on("scroll", () => {
@@ -81,15 +77,31 @@ const TopTracks: React.FC<Props> = ({ topTracks }) => {
     height: Math.ceil(topTracks.length / 7) * currentSize,
   };
 
+  const onAddSong = (songId: string) => {
+    selectedSongs.add(songId);
+    setSelectedSongs(new Set(selectedSongs));
+  };
+
+  const onRemoveSong = (songId: string) => {
+    selectedSongs.delete(songId);
+    setSelectedSongs(new Set(selectedSongs));
+  };
+
   return (
     <>
-      <FavoriteSongsMenu seedSongs={new Set()} songs={topTracks} />
-      <button onClick={click}>center</button>
+      <FavoriteSongsMenu seedSongs={selectedSongs} songs={topTracks} />
       <Wrapper ref={wrapper} className="wrapper">
         <Content className="content" style={containerStyle}>
-          {topTracks.map(song => {
-            return <Song size={currentSize} song={song} key={song.id} />;
-          })}
+          {topTracks.map(song => (
+            <Song
+              isSelected={selectedSongs.has(song.id)}
+              key={song.id}
+              size={currentSize}
+              song={song}
+              onAddSong={onAddSong}
+              onRemoveSong={onRemoveSong}
+            />
+          ))}
         </Content>
       </Wrapper>
     </>

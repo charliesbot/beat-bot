@@ -1,10 +1,12 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../utils/style";
 
 export const EmptyPlaceholder = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   color: #022f4e;
 `;
 
@@ -29,6 +31,7 @@ export const Body = styled.ul`
   overflow: hidden;
   background: white;
   margin: 0;
+  margin-top: 0.5rem;
   padding: 0.75rem;
 `;
 
@@ -76,4 +79,7 @@ export const Container = styled.section`
   transform: translateZ(1000px);
   color: white;
   border-radius: 0.3rem;
+  ${mediaQuery("mobile")} {
+    width: 94vw;
+  }
 `;

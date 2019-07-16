@@ -10,17 +10,22 @@ import {
   RecommendationsButton,
   Body,
 } from "./FavoriteSongsMenu.styled";
+import { Song as SongType } from "../../interfaces/types";
 
 type Props = {
   seedSongs: Set<string>;
-  songs: any;
+  songs: SongType[];
 };
+
+function notUndefined<T>(x: T | undefined): x is T {
+  return x !== undefined;
+}
 
 const EmptyQueue = () => {
   return (
     <EmptyPlaceholder>
       <MdLibraryMusic size={100} />
-      <h4>Add up to 5 songs and mix them all!</h4>
+      <h4>Like up to 5 songs and I'll create a new playlist just for you</h4>
     </EmptyPlaceholder>
   );
 };
@@ -29,9 +34,9 @@ const SeedersMenu: React.FC<Props> = props => {
   const { songs, seedSongs } = props;
   const [isOpen, setIsOpen] = useState(false);
 
-  const fullSelectedSongs = Array.from(seedSongs).map(song =>
-    songs.find((s: any) => s.id === song),
-  );
+  const fullSelectedSongs = Array.from(seedSongs)
+    .map(song => songs.find(s => s.id === song))
+    .filter(notUndefined);
 
   const toggleIsOpen = () => setIsOpen(!isOpen);
 
@@ -40,13 +45,13 @@ const SeedersMenu: React.FC<Props> = props => {
   return (
     <Container>
       <SeedCounter onClick={toggleIsOpen}>
-        <FaRobot />
+        <FaRobot size={25} />
       </SeedCounter>
       {isOpen && (
         <>
           <Body>
             {isEmpty && <EmptyQueue />}
-            {fullSelectedSongs.map((song: any) => {
+            {fullSelectedSongs.map(song => {
               return (
                 <SongRow
                   height={96}
