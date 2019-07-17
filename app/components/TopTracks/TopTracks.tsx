@@ -38,8 +38,8 @@ const TopTracks: React.FC<Props> = ({ topTracks }) => {
       bscroll.scroller.scrollToElement(
         songs[Math.floor(songs.length / 2)],
         1000,
-        100,
-        100,
+        currentSize / 2,
+        currentSize / 2,
       );
 
       bscroll.on("scroll", () => {

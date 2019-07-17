@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { MdClose, MdLibraryMusic } from "react-icons/md";
 import { FaRobot } from "react-icons/fa";
-import SongRow from "../SongRow";
 import {
   EmptyPlaceholder,
   SeedCounter,
@@ -10,11 +9,13 @@ import {
   RecommendationsButton,
   Body,
 } from "./FavoriteSongsMenu.styled";
-import { Song as SongType } from "../../interfaces/types";
+import { Song } from "../../interfaces/types";
+import useModal from "../../hooks/useModal";
+import SongRow from "../SongRow";
 
 type Props = {
   seedSongs: Set<string>;
-  songs: SongType[];
+  songs: Song[];
 };
 
 function notUndefined<T>(x: T | undefined): x is T {
@@ -33,6 +34,7 @@ const EmptyQueue = () => {
 const SeedersMenu: React.FC<Props> = props => {
   const { songs, seedSongs } = props;
   const [isOpen, setIsOpen] = useState(false);
+  const [openCreatePlaylistWizard] = useModal("CREATE_PLAYLIST_WIZARD");
 
   const fullSelectedSongs = Array.from(seedSongs)
     .map(song => songs.find(s => s.id === song))
@@ -44,9 +46,6 @@ const SeedersMenu: React.FC<Props> = props => {
 
   return (
     <Container>
-      <SeedCounter onClick={toggleIsOpen}>
-        <FaRobot size={25} />
-      </SeedCounter>
       {isOpen && (
         <>
           <Body>
@@ -66,11 +65,17 @@ const SeedersMenu: React.FC<Props> = props => {
               );
             })}
           </Body>
-          <RecommendationsButton disabled={isEmpty}>
+          <RecommendationsButton
+            disabled={isEmpty}
+            onClick={() => openCreatePlaylistWizard({ songs: seedSongs })}
+          >
             Find recommendations!
           </RecommendationsButton>
         </>
       )}
+      <SeedCounter onClick={toggleIsOpen}>
+        <FaRobot size={25} />
+      </SeedCounter>
     </Container>
   );
 };

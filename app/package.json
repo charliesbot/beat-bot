@@ -28,7 +28,8 @@
     "react-apollo": "^2.5.8",
     "react-apollo-hooks": "^0.4.5",
     "react-dom": "^16.8.2",
-    "react-icons": "^3.7.0"
+    "react-icons": "^3.7.0",
+    "use-clipboard-copy": "^0.1.1"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.119",
@@ -48,11 +49,11 @@
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-hooks": "^1.6.0",
     "eslint-plugin-unicorn": "^7.1.0",
-    "prettier": "^1.18.2",
-    "typescript": "3.5.2",
     "graphql-code-generator": "^0.18.0",
     "graphql-codegen-typescript-common": "0.18.0",
-    "graphql-codegen-typescript-server": "^0.18.0"
+    "graphql-codegen-typescript-server": "^0.18.0",
+    "prettier": "^1.18.2",
+    "typescript": "3.5.2"
   },
   "license": "ISC"
 }

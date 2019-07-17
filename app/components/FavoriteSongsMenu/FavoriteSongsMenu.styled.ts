@@ -14,6 +14,8 @@ export const SeedCounter = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: auto;
+  margin-top: 0.5rem;
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
@@ -70,8 +72,10 @@ export const RecommendationsButton = styled(BaseButton)`
 export const Container = styled.section`
   display: flex;
   flex-direction: column;
-  color: black;
   position: fixed;
+  bottom: 0;
+  right: 0;
+  color: black;
   overflow: hidden;
   margin: 0.75rem;
   width: 25rem;

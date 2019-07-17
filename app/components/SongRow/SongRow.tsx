@@ -1,10 +1,11 @@
 import React from "react";
 import { Row, AlbumArt, Details } from "./SongRow.styled";
+import { Song } from "../../interfaces/types";
 
 type Props = {
-  song: any;
-  right: any;
-  height: number;
+  song: Song;
+  right?: any;
+  height?: number;
 };
 
 const SongRow: React.FC<Props> = ({ song, right, height }) => {
