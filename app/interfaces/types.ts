@@ -19,11 +19,11 @@ export type Upload = any;
 export interface Query {
   user?: Maybe<User>;
 
-  playlist?: Maybe<Playlist>;
+  playlist: Playlist;
 
   topTracks: Song[];
 
-  recommendations?: Maybe<(Maybe<Song>)[]>;
+  recommendations: Song[];
 }
 
 export interface User {

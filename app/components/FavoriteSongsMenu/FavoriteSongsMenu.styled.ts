@@ -1,10 +1,12 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../utils/style";
 
 export const EmptyPlaceholder = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   color: #022f4e;
 `;
 
@@ -12,6 +14,8 @@ export const SeedCounter = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: auto;
+  margin-top: 0.5rem;
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
@@ -29,6 +33,7 @@ export const Body = styled.ul`
   overflow: hidden;
   background: white;
   margin: 0;
+  margin-top: 0.5rem;
   padding: 0.75rem;
 `;
 
@@ -51,10 +56,10 @@ export const RemoveButton = styled(BaseButton)`
 `;
 
 export const RecommendationsButton = styled(BaseButton)`
-  --recommendation-color: #0e0e6f;
+  --recommendation-color: #1db954;
   width: 100%;
   height: 3.25rem;
-  background-color: red;
+  background-color: var(--recommendation-color);
   font-weight: bold;
   color: white;
   transition: ease all 200ms;
@@ -67,8 +72,10 @@ export const RecommendationsButton = styled(BaseButton)`
 export const Container = styled.section`
   display: flex;
   flex-direction: column;
-  color: black;
   position: fixed;
+  bottom: 0;
+  right: 0;
+  color: black;
   overflow: hidden;
   margin: 0.75rem;
   width: 25rem;
@@ -76,4 +83,7 @@ export const Container = styled.section`
   transform: translateZ(1000px);
   color: white;
   border-radius: 0.3rem;
+  ${mediaQuery("mobile")} {
+    width: 94vw;
+  }
 `;

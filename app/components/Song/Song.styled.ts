@@ -4,8 +4,6 @@ type ContainerProps = {
   width: number;
   height: number;
   coverArt: string;
-  positionX: number;
-  positionY: number;
 };
 
 export const Container = styled.div<ContainerProps>`
@@ -14,7 +12,7 @@ export const Container = styled.div<ContainerProps>`
   left: 0;
   width: ${({ width }) => width}px;
   height: ${({ height }) => height}px;
-  position: absolute;
+  position: relative;
   background-size: cover;
   border-radius: 0.25rem;
   overflow: hidden;
@@ -22,11 +20,10 @@ export const Container = styled.div<ContainerProps>`
   border: none;
   box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.3);
   background-image: url('${({ coverArt }) => coverArt}');
-  transform: ${({ positionX, positionY }) =>
-    `translate3d(${positionX}px, ${positionY}px, 1px) scale3d(1, 1, 1)`};
 `;
 
-export const PlayButton = styled.button`
+export const ActionButton = styled.button`
+  flex: 1;
   box-shadow: none;
   border: none;
   background-color: rgba(255, 255, 255, 0);
@@ -41,22 +38,17 @@ export const Info = styled.section`
   flex-direction: column;
   justify-content: center;
   flex: 1;
-  max-width: 70%;
-  .songTitle,
-  .songArtist {
-    max-width: 90%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  max-width: 100%;
 `;
 
-export const Label = styled.div`
+export const Overlay = styled.div`
   display: flex;
   align-content: center;
+  flex-direction: column;
+  height: 100%;
   width: 100%;
-  height: 2.5rem;
   position: absolute;
+  top: 0;
   bottom: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.6);
@@ -67,4 +59,17 @@ export const Label = styled.div`
     margin-top: 0.125rem;
     font-size: 0.5rem;
   }
+`;
+
+export const Actions = styled.ul`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
 `;

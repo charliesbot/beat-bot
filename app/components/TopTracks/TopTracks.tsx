@@ -1,16 +1,14 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import BScroll from "@better-scroll/core";
-import MouseWheel from "@better-scroll/mouse-wheel";
 import { useOrigin } from "../../hooks/useOrigin";
 import { useMobileDetector } from "../../hooks/useMobileDetector";
 import Song, { SIZES } from "../Song";
 import FavoriteSongsMenu from "../FavoriteSongsMenu";
 import { Wrapper, Content } from "./TopTracks.styled";
-import { distanceBetweenPoints, getPosition } from "../../utils/layout";
+import { distanceBetweenPoints } from "../../utils/layout";
 import { Song as SongType } from "../../interfaces/types";
 
 let bscroll: BScroll;
-BScroll.use(MouseWheel);
 
 type Props = {
   topTracks: SongType[];
@@ -19,27 +17,32 @@ type Props = {
 const TopTracks: React.FC<Props> = ({ topTracks }) => {
   const wrapper = useRef<HTMLDivElement>(null);
   const origin = useOrigin();
+  const [selectedSongs, setSelectedSongs] = useState<Set<string>>(new Set());
   const isMobile = useMobileDetector();
   const currentSize = isMobile ? SIZES.SMALL : SIZES.BIG;
-  const positions = topTracks.map((_, index) =>
-    getPosition(index, currentSize),
-  );
 
   useEffect(() => {
     if (wrapper.current) {
+      const songs = Array.from(
+        wrapper.current!.querySelectorAll(".song"),
+      ) as HTMLDivElement[];
+
       bscroll = new BScroll(wrapper.current, {
         freeScroll: true,
-        mouseWheel: {},
         scrollbar: false,
         scrollX: true,
         scrollY: true,
         probeType: 3,
       });
 
+      bscroll.scroller.scrollToElement(
+        songs[Math.floor(songs.length / 2)],
+        1000,
+        currentSize / 2,
+        currentSize / 2,
+      );
+
       bscroll.on("scroll", () => {
-        const songs = Array.from(
-          wrapper.current!.querySelectorAll(".song"),
-        ) as HTMLDivElement[];
         const distances = songs.map(s => {
           const rect = s.getBoundingClientRect();
           const coords = {
@@ -60,8 +63,8 @@ const TopTracks: React.FC<Props> = ({ topTracks }) => {
 
         songs.forEach((s, index) => {
           const { delta, zIndex } = distances[index];
-          const { positionX, positionY } = positions[index];
-          s.style.transform = `translate3d(${positionX}px, ${positionY}px, ${zIndex}px) scale3d(${delta}, ${delta}, ${delta})`;
+          s.style.transform = `scale3d(${delta}, ${delta}, ${delta})`;
+          s.style.zIndex = zIndex.toString();
         });
       });
 
@@ -70,26 +73,39 @@ const TopTracks: React.FC<Props> = ({ topTracks }) => {
   }, [wrapper.current]);
 
   const containerStyle = {
-    width: currentSize * 6,
-    height: Math.ceil(topTracks.length / 6) * currentSize,
+    width: currentSize * 7,
+    height: Math.ceil(topTracks.length / 7) * currentSize,
+  };
+
+  const onAddSong = (songId: string) => {
+    selectedSongs.add(songId);
+    setSelectedSongs(new Set(selectedSongs));
+  };
+
+  const onRemoveSong = (songId: string) => {
+    selectedSongs.delete(songId);
+    setSelectedSongs(new Set(selectedSongs));
   };
 
   return (
     <>
-      <FavoriteSongsMenu seedSongs={new Set()} songs={topTracks} />
+      <FavoriteSongsMenu
+        seedSongs={selectedSongs}
+        songs={topTracks}
+        onRemoveSong={onRemoveSong}
+      />
       <Wrapper ref={wrapper} className="wrapper">
         <Content className="content" style={containerStyle}>
-          {topTracks.map((song, index) => {
-            return (
-              <Song
-                size={currentSize}
-                song={song}
-                key={song.id}
-                positionX={positions[index].positionX}
-                positionY={positions[index].positionY}
-              />
-            );
-          })}
+          {topTracks.map(song => (
+            <Song
+              isSelected={selectedSongs.has(song.id)}
+              key={song.id}
+              size={currentSize}
+              song={song}
+              onAddSong={onAddSong}
+              onRemoveSong={onRemoveSong}
+            />
+          ))}
         </Content>
       </Wrapper>
     </>

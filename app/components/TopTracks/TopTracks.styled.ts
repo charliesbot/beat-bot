@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../utils/style";
 
 export const NavBar = styled.header`
   height: 3.5rem;
@@ -18,11 +19,19 @@ export const Wrapper = styled.main`
 `;
 
 export const Content = styled.aside`
+  display: grid;
+  grid-template-columns: repeat(7, 200px);
+  grid-template-rows: repeat(7, 200px);
   position: relative;
   color: white;
   transform-style: preserve-3d;
   cursor: grab;
   &:active {
     cursor: grabbing;
+  }
+
+  ${mediaQuery("mobile")} {
+    grid-template-columns: repeat(7, 150px);
+    grid-template-rows: repeat(7, 150px);
   }
 `;

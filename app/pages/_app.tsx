@@ -4,6 +4,7 @@ import { ApolloProvider } from "react-apollo";
 import { ApolloProvider as ApolloHooksProvider } from "react-apollo-hooks";
 import ApolloClient from "apollo-client";
 import withApolloClient from "../lib/with-apollo-client";
+import ModalProvider from "../components/Modal/Modal";
 
 type Props = {
   pageProps: unknown;
@@ -19,7 +20,9 @@ class CustomApp extends App<Props> {
       <Container>
         <ApolloProvider client={apolloClient}>
           <ApolloHooksProvider client={apolloClient}>
-            <Component {...pageProps} />
+            <ModalProvider>
+              <Component {...pageProps} />
+            </ModalProvider>
           </ApolloHooksProvider>
         </ApolloProvider>
       </Container>

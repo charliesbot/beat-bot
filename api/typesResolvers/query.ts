@@ -3,9 +3,9 @@ import { gql, IFieldResolver } from "apollo-server-micro";
 export const typeDefs = gql`
   type Query {
     user: User
-    playlist(playlistId: ID!): Playlist
+    playlist(playlistId: ID!): Playlist!
     topTracks: [Song!]!
-    recommendations(seedTracks: [ID]): [Song]
+    recommendations(seedTracks: [ID]): [Song!]!
   }
 `;
 
