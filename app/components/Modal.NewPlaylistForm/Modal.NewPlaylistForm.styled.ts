@@ -4,7 +4,7 @@ import { css } from "@emotion/core";
 const formCss = css`
   width: 90%;
   height: 50px;
-  padding: 4rem;
+  padding: 1rem;
   background-color: lightgrey;
   border: none;
   border-radius: 3px;
@@ -17,7 +17,7 @@ export const Input = styled.input`
 export const Description = styled.textarea`
   ${formCss};
   height: 30rem;
-  margin-top: 4rem;
+  margin-top: 1rem;
 `;
 
 export const Container = styled.form`
@@ -25,5 +25,6 @@ export const Container = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4rem;
+  padding: 1rem;
+  overflow: auto;
 `;

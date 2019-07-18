@@ -16,6 +16,7 @@ import SongRow from "../SongRow";
 type Props = {
   seedSongs: Set<string>;
   songs: Song[];
+  onRemoveSong: (id: string) => void;
 };
 
 function notUndefined<T>(x: T | undefined): x is T {
@@ -32,7 +33,7 @@ const EmptyQueue = () => {
 };
 
 const SeedersMenu: React.FC<Props> = props => {
-  const { songs, seedSongs } = props;
+  const { songs, seedSongs, onRemoveSong } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [openCreatePlaylistWizard] = useModal("CREATE_PLAYLIST_WIZARD");
 
@@ -57,7 +58,7 @@ const SeedersMenu: React.FC<Props> = props => {
                   key={song.id}
                   song={song}
                   right={
-                    <RemoveButton>
+                    <RemoveButton onClick={() => onRemoveSong(song.id)}>
                       <MdClose />
                     </RemoveButton>
                   }

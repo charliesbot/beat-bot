@@ -12,11 +12,11 @@ const Stepper: React.FC<Props> = props => {
   return (
     <Steps>
       {steps.map((step, index) => {
-        const isActive = index + 1 <= activeStep;
+        const isActive = index <= activeStep;
         return (
           <>
             {index > 0 && <Line isActive={isActive} />}
-            <Step isActive={isActive}>
+            <Step isActive={isActive} key={index}>
               <StepInner>{step.children || index}</StepInner>
             </Step>
           </>

@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Input = styled.input`
   width: 100%;
-  padding: 2rem;
+  padding: 0.5rem;
   border: solid 2px rgba(0,0,0,0.3);
   border-radius: 6px;
   border-top-right-radius: 0;
@@ -21,11 +21,11 @@ export const RoundedButton: any = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 10rem;
-  padding: 2rem 8rem;
+  height: 2.5rem;
+  padding: 0.5rem 2rem;
   cursor: pointer;
   color: white;
-  background-color: ${props => props.theme.primary};
+  background-color: #1db954;
   border-radius: 6px;
   transition: all ease 200ms;
   border: none;
@@ -35,7 +35,7 @@ export const RoundedButton: any = styled.button`
 `;
 
 export const CopyButton = styled(RoundedButton)`
-  --primary-color: ${props => props.theme.primary};
+  --primary-color: #1db954;
   border-radius: 6px;
   border: solid 2px var(--primary-color);
   color: var(--primary-color);
@@ -49,7 +49,7 @@ export const CopyButton = styled(RoundedButton)`
 
 export const SkipButton = styled.a`
   cursor: pointer;
-  color: ${props => props.theme.primary};
+  color: #1db954;
   font-size: 0.9em;
 `;
 
@@ -58,9 +58,10 @@ export const Container = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4rem 10rem 10rem;
+  padding: 1rem 2.5rem 2.5rem;
+  overflow: auto;
   ${CopyRow} {
-    margin: 4rem 0;
+    margin: 1rem 0;
   }
 
   ${Input} {

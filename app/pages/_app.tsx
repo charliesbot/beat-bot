@@ -18,13 +18,13 @@ class CustomApp extends App<Props> {
 
     return (
       <Container>
-        <ModalProvider>
-          <ApolloProvider client={apolloClient}>
-            <ApolloHooksProvider client={apolloClient}>
+        <ApolloProvider client={apolloClient}>
+          <ApolloHooksProvider client={apolloClient}>
+            <ModalProvider>
               <Component {...pageProps} />
-            </ApolloHooksProvider>
-          </ApolloProvider>
-        </ModalProvider>
+            </ModalProvider>
+          </ApolloHooksProvider>
+        </ApolloProvider>
       </Container>
     );
   }

@@ -5,7 +5,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: 4rem;
+  padding: 1rem;
 `;
 
 export const Body = styled.section`

@@ -89,7 +89,11 @@ const TopTracks: React.FC<Props> = ({ topTracks }) => {
 
   return (
     <>
-      <FavoriteSongsMenu seedSongs={selectedSongs} songs={topTracks} />
+      <FavoriteSongsMenu
+        seedSongs={selectedSongs}
+        songs={topTracks}
+        onRemoveSong={onRemoveSong}
+      />
       <Wrapper ref={wrapper} className="wrapper">
         <Content className="content" style={containerStyle}>
           {topTracks.map(song => (

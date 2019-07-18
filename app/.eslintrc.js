@@ -9,12 +9,12 @@ module.exports = {
     "plugin:unicorn/recommended",
     "prettier",
     "prettier/react",
-    "prettier/@typescript-eslint"
+    "prettier/@typescript-eslint",
   ],
   env: {
     node: true,
     browser: true,
-    jest: true
+    jest: true,
   },
   rules: {
     // Too restrictive, writing ugly code to defend against a very unlikely scenario: https://eslint.org/docs/rules/no-prototype-builtins
@@ -24,8 +24,8 @@ module.exports = {
       "error",
       {
         groups: ["builtin", "external", "internal", "sibling", "index"],
-        "newlines-between": "never"
-      }
+        "newlines-between": "never",
+      },
     ],
     "import/no-unresolved": "off",
     "import/named": "off",
@@ -40,6 +40,6 @@ module.exports = {
     "prettier/prettier": "error",
     "react-hooks/rules-of-hooks": "error",
     "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/explicit-function-return-type": "off"
-  }
+    "@typescript-eslint/explicit-function-return-type": "off",
+  },
 };

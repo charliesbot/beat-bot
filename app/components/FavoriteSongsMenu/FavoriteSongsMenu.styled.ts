@@ -56,10 +56,10 @@ export const RemoveButton = styled(BaseButton)`
 `;
 
 export const RecommendationsButton = styled(BaseButton)`
-  --recommendation-color: #0e0e6f;
+  --recommendation-color: #1db954;
   width: 100%;
   height: 3.25rem;
-  background-color: red;
+  background-color: var(--recommendation-color);
   font-weight: bold;
   color: white;
   transition: ease all 200ms;

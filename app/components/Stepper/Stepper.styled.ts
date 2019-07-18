@@ -13,7 +13,7 @@ export const Step = styled.li<{ isActive: boolean }>`
   align-items: center;
   justify-content: center;
   position: relative;
-  --step-color: ${props => (props.isActive ? props.theme.secondary : "gray")};
+  --step-color: ${props => (props.isActive ? "black" : "gray")};
 `;
 
 export const StepInner = styled.section`
@@ -34,6 +34,5 @@ export const StepTitle = styled.section`
 export const Line = styled.section<{ isActive: boolean }>`
   flex: 1;
   height: 3px;
-  background-color: ${props =>
-    props.isActive ? props.theme.secondary : "gray"};
+  background-color: ${props => (props.isActive ? "black" : "gray")};
 `;

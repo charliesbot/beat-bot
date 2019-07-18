@@ -1,10 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdMusicNote, MdEdit, MdSend, MdClose } from "react-icons/md";
-import Dialog from "../Dialog";
-import Stepper from "../Stepper";
-import CuratedPlaylist from "../Modal.CuratedPlaylist";
-import PlaylistNameForm from "../Modal.NewPlaylistForm";
-import ShareNewPlaylistModal from "../Modal.ShareNewPlaylist";
 import {
   Header,
   Title,
@@ -12,6 +7,10 @@ import {
   Footer,
   NextStep,
 } from "./CreatePlaylistWizard.styled";
+import Stepper from "../Stepper";
+import CuratedPlaylist from "../Modal.CuratedPlaylist";
+import PlaylistNameForm from "../Modal.NewPlaylistForm";
+import ShareNewPlaylistModal from "../Modal.ShareNewPlaylist";
 
 const steps = [
   {
@@ -27,10 +26,10 @@ const steps = [
 
 const renderStep = ({ step, ...props }: any) => {
   switch (step) {
-    case 1: {
+    case 0: {
       return <CuratedPlaylist {...props} />;
     }
-    case 2: {
+    case 1: {
       return <PlaylistNameForm {...props} />;
     }
     default: {
@@ -48,17 +47,40 @@ export const CreatePlaylistWizardFooter: React.FC<any> = ({ nextStep }) => {
 };
 
 const CreatePlaylistWizard: React.FC<any> = props => {
+  const [step, setStep] = useState(0);
+  const [newPlaylistData, setNewPlaylistData] = useState({
+    userId: "",
+    playlistName: "",
+    uris: [""],
+  });
+
+  const setNewPlaylistSongs = (songUris: string[]) => {
+    setNewPlaylistData({ ...newPlaylistData, uris: songUris });
+  };
+
+  const onChangeInput = (field: string) => (evt: any) =>
+    setNewPlaylistData({ ...newPlaylistData, [field]: evt.target.value });
+
   return (
-    <Dialog isVisible={props.show}>
-      <CloseButton onClick={props.handleHide}>
+    <>
+      <CloseButton onClick={props.closeModal}>
         <MdClose />
       </CloseButton>
       <Header>
-        <Title>{steps[props.step - 1].title}</Title>
-        <Stepper activeStep={props.step} steps={steps} />
+        <Title>{steps[step].title}</Title>
+        <Stepper activeStep={step} steps={steps} />
       </Header>
-      {renderStep(props)}
-    </Dialog>
+      {renderStep({
+        ...props,
+        step,
+        newPlaylistData,
+        onChangeInput,
+        setNewPlaylistSongs,
+      })}
+      {step < steps.length - 1 && (
+        <CreatePlaylistWizardFooter nextStep={() => setStep(step + 1)} />
+      )}
+    </>
   );
 };
 
