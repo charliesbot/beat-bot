@@ -15,13 +15,13 @@ export const SIZES = {
   BIG: 200,
 };
 
-type Props = {
+interface Props {
   isSelected: boolean;
   song: SongType;
   size: number;
   onAddSong: (songId: string) => void;
   onRemoveSong: (songId: string) => void;
-};
+}
 
 const Song: React.FC<Props> = props => {
   const { song, size, onAddSong, onRemoveSong, isSelected } = props;

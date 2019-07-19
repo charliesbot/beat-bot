@@ -1,26 +1,10 @@
 import styled from "@emotion/styled";
 
-type ContainerProps = {
+interface ContainerProps {
   width: number;
   height: number;
   coverArt: string;
-};
-
-export const Container = styled.div<ContainerProps>`
-  display: flex;
-  top: 0;
-  left: 0;
-  width: ${({ width }) => width}px;
-  height: ${({ height }) => height}px;
-  position: relative;
-  background-size: cover;
-  border-radius: 0.25rem;
-  overflow: hidden;
-  will-change: transform;
-  border: none;
-  box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.3);
-  background-image: url('${({ coverArt }) => coverArt}');
-`;
+}
 
 export const ActionButton = styled.button`
   flex: 1;
@@ -51,6 +35,8 @@ export const Overlay = styled.div`
   top: 0;
   bottom: 0;
   left: 0;
+  opacity: 0;
+  transition: 100ms ease opacity;
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
   padding: 0.5rem;
@@ -72,4 +58,25 @@ export const Actions = styled.ul`
   position: absolute;
   left: 0;
   bottom: 0;
+`;
+
+export const Container = styled.div<ContainerProps>`
+  display: flex;
+  top: 0;
+  left: 0;
+  width: ${({ width }) => width}px;
+  height: ${({ height }) => height}px;
+  position: relative;
+  background-size: cover;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  will-change: transform;
+  border: none;
+  box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.3);
+  background-image: url('${({ coverArt }) => coverArt}');
+  &.show-overlay {
+    ${Overlay} {
+      opacity: 1;
+    }
+  }
 `;
