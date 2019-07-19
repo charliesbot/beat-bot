@@ -19,11 +19,11 @@ export const Container = styled.section`
   height: 100%;
 `;
 
-export const Spinner = styled.div<{ size: number }>`
+export const Spinner = styled.div<{ size: number; color?: string }>`
   width: ${props => props.size}px;
   height: ${props => props.size}px;
   border-radius: 50%;
-  color: ${props => props.theme.primary};
+  color: ${props => props.color || "black"};
   border: solid 10px;
   border-left-color: transparent;
   animation: ${rotate} 1s linear infinite;
