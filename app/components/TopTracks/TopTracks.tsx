@@ -1,18 +1,18 @@
 import React, { useRef, useEffect, useState } from "react";
 import BScroll from "@better-scroll/core";
+import { Wrapper, Content } from "./TopTracks.styled";
 import { useOrigin } from "../../hooks/useOrigin";
 import { useMobileDetector } from "../../hooks/useMobileDetector";
 import Song, { SIZES } from "../Song";
 import FavoriteSongsMenu from "../FavoriteSongsMenu";
-import { Wrapper, Content } from "./TopTracks.styled";
 import { distanceBetweenPoints } from "../../utils/layout";
 import { Song as SongType } from "../../interfaces/types";
 
 let bscroll: BScroll;
 
-type Props = {
+interface Props {
   topTracks: SongType[];
-};
+}
 
 const TopTracks: React.FC<Props> = ({ topTracks }) => {
   const wrapper = useRef<HTMLDivElement>(null);
@@ -64,6 +64,9 @@ const TopTracks: React.FC<Props> = ({ topTracks }) => {
         songs.forEach((s, index) => {
           const { delta, zIndex } = distances[index];
           s.style.transform = `scale3d(${delta}, ${delta}, ${delta})`;
+          delta > 1.5
+            ? s.classList.add("show-overlay")
+            : s.classList.remove("show-overlay");
           s.style.zIndex = zIndex.toString();
         });
       });

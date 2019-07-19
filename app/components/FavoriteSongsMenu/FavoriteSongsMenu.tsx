@@ -34,7 +34,7 @@ const EmptyQueue = () => {
 
 const SeedersMenu: React.FC<Props> = props => {
   const { songs, seedSongs, onRemoveSong } = props;
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [openCreatePlaylistWizard] = useModal("CREATE_PLAYLIST_WIZARD");
 
   const fullSelectedSongs = Array.from(seedSongs)
