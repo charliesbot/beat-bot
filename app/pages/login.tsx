@@ -3,6 +3,19 @@ import { FaSpotify } from "react-icons/fa";
 import { NextPage } from "next";
 import styled from "@emotion/styled";
 import Layout from "../components/Layout";
+import { Link } from "../components/Link/Link.styled";
+
+const Footer = styled.footer`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  z-index: 1;
+  position: fixed;
+  bottom: 1rem;
+  a {
+    margin-left: 0.5rem;
+  }
+`;
 
 const LoginButton = styled.a`
   display: flex;
@@ -61,7 +74,7 @@ const Container = styled.main`
   width: 100%;
   height: 100%;
   color: white;
-  background-image: url("/static/audience.jpeg");
+  background-image: url("/static/audience.jpg");
   background-size: cover;
   background-position: center;
   ${LoginButton}, ${Header} {
@@ -87,8 +100,17 @@ const LoginPage: NextPage = () => {
           <SpotifyIcon size="6rem" />
           Login with Spotify
         </LoginButton>
-
         <Overlay />
+        <Footer>
+          Done with ❤️by
+          <Link
+            href="https://twitter.com/charliesbot"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            @charliesbot
+          </Link>
+        </Footer>
       </Container>
     </Layout>
   );
