@@ -8,12 +8,28 @@
     }
   },
   "builds": [
-    { "src": "app/package.json", "use": "@now/next" },
-    { "src": "api/*.ts", "use": "@now/node" }
+    {
+      "src": "app/package.json",
+      "use": "@now/next"
+    },
+    {
+      "src": "api/*.ts",
+      "use": "@now/node"
+    },
+    {
+      "src": "api/python/*.py",
+      "use": "@now/python@canary"
+    }
   ],
   "routes": [
-    { "src": "/graphql", "dest": "api/graphql.ts" },
-    { "src": "/api/(.*)", "dest": "/api/$1" },
+    {
+      "src": "/graphql",
+      "dest": "api/graphql.ts"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
     {
       "src": "/(.*)",
       "dest": "/app/$1",

@@ -1,4 +1,7 @@
 api/node_modules
+app/node_modules
+.DS_Store
 .env
 .env.build
+.now
 
