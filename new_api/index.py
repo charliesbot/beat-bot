@@ -3,6 +3,7 @@ from ariadne.constants import PLAYGROUND_HTML
 from spotipy import Spotify
 from flask import Flask, request, jsonify
 from .types_resolvers.query import query
+from .types_resolvers.mutation import mutation
 from .types_resolvers.user import user
 from .types_resolvers.playlist import playlist
 from .types_resolvers.song import song
@@ -73,10 +74,23 @@ type_defs = gql(
             topTracks: [Song!]!
             recommendations(seedTracks: [ID]): [Song!]!
         }
+
+        type CreatePlaylistWithSongsPayload {
+            playlist: Playlist!
+        }
+
+        type Mutation {
+            createPlaylistWithSongs(
+            userId: String!
+            playlistName: String!
+            uris: [String]!
+            ): CreatePlaylistWithSongsPayload
+        }
+
     """
 )
 
-schema = make_executable_schema(type_defs, [query, user, playlist, song])
+schema = make_executable_schema(type_defs, [query, mutation, user, playlist, song])
 
 app = Flask(__name__)
 

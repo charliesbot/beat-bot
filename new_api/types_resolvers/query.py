@@ -1,4 +1,4 @@
-from ariadne import QueryType
+from ariadne import QueryType, convert_kwargs_to_snake_case
 
 query = QueryType()
 
@@ -10,15 +10,18 @@ def resolve_user(_, info):
 
 
 @query.field("playlist")
-def resolve_playlist(_, info):
+@convert_kwargs_to_snake_case
+def resolve_playlist(_, info, playlist_id):
     spotify = info.context["spotify"]
-    return spotify.current_user()
+    return spotify.playlist(playlist_id=playlist_id)
 
 
 @query.field("recommendations")
-def resolve_recommendations(_, info):
+@convert_kwargs_to_snake_case
+def resolve_recommendations(_, info, seed_tracks):
     spotify = info.context["spotify"]
-    return spotify.current_user()
+    result = spotify.recommendations(track_ids=seed_tracks)
+    return result.tracks
 
 
 @query.field("topTracks")
