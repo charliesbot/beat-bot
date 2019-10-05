@@ -16,16 +16,11 @@
       "src": "api/*.ts",
       "use": "@now/node"
     },
-    {
-      "src": "api/python/*.py",
-      "use": "@now/python@canary"
-    }
+    { "src": "new_api/index.py", "use": "@now/python" },
+    { "src": "new_api/*.py", "use": "@now/python" }
   ],
   "routes": [
-    {
-      "src": "/graphql",
-      "dest": "api/graphql.ts"
-    },
+    { "src": "/graphql", "dest": "new_api/index.py" },
     {
       "src": "/api/(.*)",
       "dest": "/api/$1"

@@ -7,10 +7,16 @@ verify_ssl = true
 black = "==19.3b0"
 mypy = "*"
 flake8 = "*"
+python-dotenv = "*"
 
 [packages]
 pyfy = "*"
 flask = "*"
+ariadne = "*"
+spotipy = {git = "https://github.com/felix-hilden/spotipy.git"}
 
 [requires]
 python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
