@@ -15,8 +15,5 @@ flask = "*"
 ariadne = "*"
 spotipy = {git = "https://github.com/felix-hilden/spotipy.git"}
 
-[requires]
-python_version = "3.7"
-
 [pipenv]
 allow_prereleases = true
