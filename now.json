@@ -17,7 +17,8 @@
       "use": "@now/node"
     },
     { "src": "new_api/index.py", "use": "@now/python" },
-    { "src": "new_api/*.py", "use": "@now/python" }
+    { "src": "new_api/*.py", "use": "@now/python" },
+    { "src": "new_api/types_resolvers/*.py", "use": "@now/python" }
   ],
   "routes": [
     { "src": "/graphql", "dest": "new_api/index.py" },
