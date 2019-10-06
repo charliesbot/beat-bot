@@ -11,10 +11,10 @@ def resolve_create_playlist_with_songs(
     _, info, user_id: str, uris: List[str], playlist_name="Playlist made by Beat Bot"
 ):
     spotify: Spotify = info.context["spotify"]
-    playlist = spotify.playlist_create(
-        user_id=user_id, name=playlist_name, public=False
+    playlist = spotify.user_playlist_create(
+        user=user_id, name=playlist_name, public=False
     )
 
-    spotify.playlist_tracks_add(playlist_id=playlist.id, track_ids=uris)
+    spotify.user_playlist_add_tracks(user=user_id, playlist_id=playlist['id'], tracks=uris)
 
     return {"playlist": playlist}

@@ -13,7 +13,7 @@ python-dotenv = "*"
 pyfy = "*"
 flask = "*"
 ariadne = "*"
-spotipy = {git = "https://github.com/felix-hilden/spotipy.git"}
+spotipy = "*"
 
 [requires]
 python_version = "3.6"
