@@ -23,8 +23,8 @@ const CuratedPlaylistModal: React.FC<Props> = props => {
 
   useEffect(() => {
     if (data && data.recommendations) {
-      const uris = data.recommendations.map(song => song.uri);
-      setNewPlaylistSongs([...uris]);
+      const songsIds = data.recommendations.map(song => song.id);
+      setNewPlaylistSongs([...songsIds]);
     }
   }, [data]);
 

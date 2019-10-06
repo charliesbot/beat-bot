@@ -26,6 +26,7 @@ const CuratedPlaylistModal: React.FC<any> = props => {
         variables: { ...newPlaylistData, userId: data.user.id },
       })
         .then(({ data }) => {
+          // @ts-ignore
           setPlaylist(data.createPlaylistWithSongs.playlist);
         })
         .catch(error => {
