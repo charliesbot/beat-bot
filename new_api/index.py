@@ -1,7 +1,8 @@
 from ariadne import graphql_sync, make_executable_schema, gql
 from ariadne.constants import PLAYGROUND_HTML
 from spotipy import Spotify
-from flask import Flask, request, jsonify
+from typing import Tuple
+from flask import Flask, request, jsonify, Response
 from .types_resolvers.query import query
 from .types_resolvers.mutation import mutation
 from .types_resolvers.user import user
@@ -96,7 +97,7 @@ app = Flask(__name__)
 
 
 @app.route("/graphql", methods=["GET"])
-def graphql_playgroud():
+def graphql_playgroud() -> Tuple[str, int]:
     # On GET request serve GraphQL Playground
     # You don't need to provide Playground if you don't want to
     # but keep on mind this will not prohibit clients from
@@ -105,14 +106,14 @@ def graphql_playgroud():
 
 
 @app.route("/graphql", methods=["POST"])
-def graphql_server():
+def graphql_server() -> Tuple[Response, int]:
     # GraphQL queries are always sent as POST
     data = request.get_json()
 
-    token: str = request.headers.get("authorization")
+    token = request.headers.get("authorization")
 
     # this is Bearer xxxxx, so we remove "Bearer"
-    token = token.split(" ")[1]
+    token = token.split(" ")[1] if token else ""
 
     spotify = Spotify(token)
 
@@ -121,6 +122,7 @@ def graphql_server():
     )
 
     status_code = 200 if success else 400
+
     return jsonify(result), status_code
 
 
